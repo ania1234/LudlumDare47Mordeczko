@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public event Action<float> onDayTimeLeftChanged = new Action<float>(x => { });
 
     public float dayDuration = 15.0f;
+    public int maxLevelNumber = 7;
 
     public static GameManager instance;
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     //może nie chcemy progressowaćdo nastepnego levelu jesli nie rozwalilismy wszystkich zagadek,
     //albo jestesmy w trakcie progressu
     public bool canProgressLevel { get; set; } = true;
+
+    public LevelEnd levelEnd { get; set; }
 
     private void Awake()
     {
@@ -51,10 +54,11 @@ public class GameManager : MonoBehaviour
         Player.instance.gameObject.transform.position = teleportPoint.position;
         levelNumber++;
         onPassChanged(levelNumber);
+
+        onDayTimeChanged(DayTimeEnum.day);
         CameraManager.instance.RequestCameraFade(0.4f, false);
         yield return new WaitForSeconds(0.5f);
 
-        onDayTimeChanged(DayTimeEnum.day);
         var waitEOF = new WaitForEndOfFrame();
         var timeLeft = dayDuration;
         while (timeLeft > 0)
@@ -64,12 +68,24 @@ public class GameManager : MonoBehaviour
             timeLeft -= Time.deltaTime;
         }
 
-        onDayTimeChanged(DayTimeEnum.night);
-        Player.instance.state.canMove = true;
-        canProgressLevel = true;
+        if (levelNumber < maxLevelNumber)
+        {
+            onDayTimeChanged(DayTimeEnum.night);
+            Player.instance.state.canMove = true;
+            canProgressLevel = true;
+        }
+        else
+        {
+            GameWin();
+        }
     }
 
     public void GameOver()
+    {
+
+    }
+
+    public void GameWin()
     {
 
     }

@@ -44,6 +44,15 @@ public class CameraManager : MonoBehaviour
 
     public void RequestCameraFade(float fadeTime, bool fadeIn)
     {
-
+        var dimCam = mainCamera.GetComponent<DimScript>();
+        dimCam.StopAllCoroutines();
+        if (fadeIn)
+        {
+            dimCam.MoveDimValue(1, 0, fadeTime);
+        }
+        else
+        {
+            dimCam.MoveDimValue(0, 1, fadeTime);
+        }
     }
 }

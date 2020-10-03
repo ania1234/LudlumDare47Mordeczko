@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
     public List<AudioClip> clips;
     private int currentClipIndex;
+    public float minVolume = 0.1f;
 
     private void Awake()
     {
@@ -17,6 +18,9 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }
 
+        currentClipIndex = Random.Range(0, clips.Count);
+        audioSource.clip = clips[currentClipIndex];
+        audioSource.Play();
     }
 
     private void Update()
@@ -24,6 +28,12 @@ public class AudioManager : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             ChangeTrack();
+        }
+
+        if (GameManager.instance != null && GameManager.instance.levelEnd != null)
+        {
+            float levelProgress = (Player.instance.transform.position.x - GameManager.instance.levelEnd.teleportPoint.position.x) / (GameManager.instance.levelEnd.transform.position.x - GameManager.instance.levelEnd.teleportPoint.position.x);
+            audioSource.volume = Mathf.Lerp(minVolume, 1, (GameManager.instance.levelNumber + levelProgress) / GameManager.instance.maxLevelNumber);
         }
     }
 

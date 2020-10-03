@@ -6,6 +6,16 @@ public class LevelEnd : MonoBehaviour
 {
     public Transform teleportPoint;
 
+    private IEnumerator Start()
+    {
+        while (GameManager.instance == null)
+        {
+            yield return null;
+        }
+
+        GameManager.instance.levelEnd = this;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (GameManager.instance.canProgressLevel)
