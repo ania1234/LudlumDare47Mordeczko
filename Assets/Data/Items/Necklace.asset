@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f55fa44fb6c3986489102c3322efa543, type: 3}
-  m_Name: Mushroom
+  m_Name: Necklace
   m_EditorClassIdentifier: 
-  name: Mushroom
-  icon: {fileID: 21300000, guid: 5e1354b3e39cd2e4b9a64db042c9fb0f, type: 3}
+  name: Necklace
+  icon: {fileID: 21300000, guid: 421d354ebdb397f4286b065bfc3a7de1, type: 3}
   size: {x: 3, y: 3}

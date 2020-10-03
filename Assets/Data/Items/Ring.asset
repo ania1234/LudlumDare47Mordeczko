@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f55fa44fb6c3986489102c3322efa543, type: 3}
-  m_Name: Mushroom
+  m_Name: Ring
   m_EditorClassIdentifier: 
-  name: Mushroom
-  icon: {fileID: 21300000, guid: 5e1354b3e39cd2e4b9a64db042c9fb0f, type: 3}
-  size: {x: 3, y: 3}
+  name: Ring
+  icon: {fileID: 21300000, guid: f033dacfaf7dff848ae6af34e9366f3f, type: 3}
+  size: {x: 4, y: 3}
