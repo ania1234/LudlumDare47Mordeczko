@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Implementing beat detection as per article: http://mziccard.me/2015/05/28/beats-detection-algorithms-1/
@@ -12,6 +13,7 @@ public class SimpleColorChangeVolumeAnalyzer : MonoBehaviour, ICustomVolumeAnaly
     private float oldColorVal = 0;
     private OutputVolume ov;
     private SpriteRenderer sprite;
+    private Image image;
 
     public Color startColor = Color.white;
     public Color endColor = Color.black;
@@ -33,6 +35,7 @@ public class SimpleColorChangeVolumeAnalyzer : MonoBehaviour, ICustomVolumeAnaly
     {
         ov = this.GetComponent<OutputVolume>();
         sprite = this.GetComponent<SpriteRenderer>();
+        image = this.GetComponent<Image>();
     }
 
     void ICustomVolumeAnalyzer.ProcessNewVolume(float newVal)
@@ -56,10 +59,24 @@ public class SimpleColorChangeVolumeAnalyzer : MonoBehaviour, ICustomVolumeAnaly
 
         if (beat)
         {
-            sprite.color = endColor;
+            if (sprite != null)
+            {
+                sprite.color = endColor; 
+            }
+            else
+            {
+                image.color = endColor;
+            }
         }
         else {
-            sprite.color = Color.Lerp(sprite.color, startColor, 0.05f);
+            if (sprite != null)
+            {
+                sprite.color = Color.Lerp(sprite.color, startColor, 0.05f); 
+            }
+            else
+            {
+                image.color = Color.Lerp(sprite.color, startColor, 0.05f);
+            }
         }
     }
 }
