@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     public static Player instance;
 
+    public int jumpCount { get; internal set; }
+
     private void Awake()
     {
         state = new PlayerState();

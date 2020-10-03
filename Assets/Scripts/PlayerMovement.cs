@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float horizontalMovementSpeed;
     public float jumpForce;
+    public int maxJumpCount = 3;
     public Player player;
 
     private bool shouldJump;
@@ -40,9 +41,13 @@ public class PlayerMovement : MonoBehaviour
 
         player.transform.position = player.transform.position + new Vector3(1, 0, 0) * xMovement * horizontalMovementSpeed * Time.fixedDeltaTime;
 
-        if (shouldJump && player.state.canJump)
+        if (shouldJump)
         {
-            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+            player.jumpCount++;
+            if (player.state.canJump && player.jumpCount < maxJumpCount)
+            {
+                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+            }
             shouldJump = false;
         }
     }

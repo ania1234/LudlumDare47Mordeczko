@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class FloorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject == Player.instance.gameObject)
+        {
+            Player.instance.jumpCount = 0;
+        }
     }
 }

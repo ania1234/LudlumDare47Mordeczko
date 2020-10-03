@@ -13,6 +13,7 @@ public class LevelEnd : MonoBehaviour
             if (collision.gameObject == Player.instance.gameObject)
             {
                 Player.instance.gameObject.transform.position = teleportPoint.position;
+                GameManager.instance.ProgressLevel();
             }
         }
     }

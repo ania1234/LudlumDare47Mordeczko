@@ -25,4 +25,10 @@ public class GameManager : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         }
     }
+
+    public void ProgressLevel()
+    {
+        levelNumber++;
+        onPassChanged(levelNumber);
+    }
 }
