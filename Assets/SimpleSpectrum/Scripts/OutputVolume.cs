@@ -22,7 +22,8 @@ public class OutputVolume : MonoBehaviour
     [Tooltip("Enables or disables the processing and display of volume data.")]
     public bool isEnabled = true;
 
-    public int koszyki = 3;
+    public int sampleStart = 0;
+    public int sampleEnd = 3;
 
     /// <summary>
     /// The type of source for volume data.
@@ -182,6 +183,8 @@ public class OutputVolume : MonoBehaviour
 
     private ICustomVolumeAnalyzer customAnalyzer;
 
+    private Vector3 initialPosition;
+
     private IEnumerator Start()
     {
         while (AudioManager.instance == null)
@@ -227,6 +230,8 @@ public class OutputVolume : MonoBehaviour
         {
             customAnalyzer = this.GetComponent<ICustomVolumeAnalyzer>();
         }
+
+        initialPosition = this.transform.localPosition;
     }
 
     private void Update()
@@ -234,10 +239,12 @@ public class OutputVolume : MonoBehaviour
         if (isEnabled && sourceType != SourceType.Custom)
         {
             if (sourceType == SourceType.AudioListener)
-                newValue = GetRMS(sampleAmount, koszyki, channel);
+                newValue = GetRMS(sampleAmount, sampleStart, sampleEnd, channel);
             else
-                newValue = GetRMS(audioSource, sampleAmount, koszyki, channel);
+                newValue = GetRMS(audioSource, sampleAmount, sampleStart, sampleEnd, channel);
         }
+
+        newValue *= audioSource.volume;
 
         float newScale = newValue > oldScale ? Mathf.Lerp(oldScale, newValue, attackDamp) : Mathf.Lerp(oldScale, newValue, decayDamp);
 
@@ -272,7 +279,7 @@ public class OutputVolume : MonoBehaviour
                 break;
 
             case OutputType.ObjectPosition:
-                transform.localPosition = valueMultiplier * newScale;
+                transform.localPosition = valueMultiplier * newScale + initialPosition;
                 break;
 
             case OutputType.ObjectRotation:
@@ -296,14 +303,14 @@ public class OutputVolume : MonoBehaviour
     /// <param name="aSource">The AudioSource to reference.</param>
     /// <param name="sampleSize">The number of samples to take, as a power of two. Higher values mean more precise volume.</param>
     /// <param name="channelUsed">The audio channel to take data from.</param>
-    public static float GetRMS(AudioSource aSource, int sampleSize, int koszyki, int channelUsed = 0)
+    public static float GetRMS(AudioSource aSource, int sampleSize, int sampleStart, int sampleEnd, int channelUsed = 0)
     {
         sampleSize = Mathf.ClosestPowerOfTwo(sampleSize);
         float[] outputSamples = new float[sampleSize];
         aSource.GetOutputData(outputSamples, channelUsed);
 
         float rms = 0;
-        for (int i = 0; i < koszyki; i++)
+        for (int i = sampleStart; i < sampleEnd; i++)
         {
             rms += outputSamples[i] * outputSamples[i];
         }
@@ -319,14 +326,14 @@ public class OutputVolume : MonoBehaviour
     /// </summary>
     /// <param name="sampleSize">The number of samples to take, as a power of two. Higher values mean more precise volume.</param>
     /// <param name="channelUsed">The audio channel to take data from.</param>
-    public static float GetRMS(int sampleSize, int koszyki, int channelUsed = 0)
+    public static float GetRMS(int sampleSize, int samplesStart, int samplesEnd, int channelUsed = 0)
     {
         sampleSize = Mathf.ClosestPowerOfTwo(sampleSize);
         float[] outputSamples = new float[sampleSize];
         AudioListener.GetOutputData(outputSamples, channelUsed);
 
         float rms = 0;
-        for (int i = 0; i < koszyki; i++)
+        for (int i = samplesStart; i < samplesEnd; i++)
         {
             rms += outputSamples[i] * outputSamples[i];
         }
