@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5560869124572287104}
   - component: {fileID: 5560869124572287105}
   - component: {fileID: 749146303945001305}
+  - component: {fileID: 4142101468215226558}
   m_Layer: 0
   m_Name: shopitemslot
   m_TagString: Untagged
@@ -89,6 +90,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   capacity: {fileID: 5560869124946307172}
   icon: {fileID: 5560869125729177025}
+--- !u!225 &4142101468215226558
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5560869124572287107}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5560869124946307174
 GameObject:
   m_ObjectHideFlags: 0
