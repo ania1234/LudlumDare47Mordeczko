@@ -17,6 +17,6 @@ public class LevelNumberTracker : MonoBehaviour
 
     private void Instance_onPassChanged(int obj)
     {
-        levelNumberText.SetText ( $"Level: {obj}");
+        levelNumberText.SetText ( $"Level {obj}");
     }
 }
