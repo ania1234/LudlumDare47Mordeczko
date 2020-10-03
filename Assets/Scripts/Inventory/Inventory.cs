@@ -18,10 +18,9 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemInfo item)
     {
-        if (items.Count < capacity)
+        if (grid.AddInFirstSpace(item))
         {
             items.Add(item);
-            grid.AddInFirstSpace(item);
         }
     }
 

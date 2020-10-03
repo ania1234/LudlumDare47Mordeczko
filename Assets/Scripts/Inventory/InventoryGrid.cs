@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class InventoryGrid : MonoBehaviour
 {
-    public int[,] grid;//2 dimensions
+    public int[,] grid;
 
     public List<ItemSlot> itemsInBag = new List<ItemSlot>();
+    public ItemSlot prefabSlot;
+    public Transform gridBackground;
+    public Transform itemPlace;
+    public GameObject slotPrefab;
 
     public int maxGridX;
     int maxGridY;
 
-    public ItemSlot prefabSlot;
     Vector2 cellSize = new Vector2(34f, 34f);
 
     Inventory inventory;
@@ -24,6 +27,11 @@ public class InventoryGrid : MonoBehaviour
         maxGridY = (int)((inventory.capacity + 1) / maxGridX);
 
         grid = new int[maxGridX, maxGridY];
+
+        for (int i = 0; i < inventory.capacity; i++)
+        {
+            var itemUI = Instantiate(slotPrefab, gridBackground);
+        }
     }
 
     public bool AddInFirstSpace(ItemInfo item)
@@ -35,14 +43,13 @@ public class InventoryGrid : MonoBehaviour
         {
             for (int j = 0; j < maxGridY; j++)
             {
-                if (posItemNaBag.Count != (contX * contY)) // if false, the item fit the bag
+                if (posItemNaBag.Count != (contX * contY))
                 {
-                    //for each x,y position (i,j), test if item fits
-                    for (int sizeY = 0; sizeY < contY; sizeY++) // item size in Y
+                    for (int sizeY = 0; sizeY < contY; sizeY++)
                     {
-                        for (int sizeX = 0; sizeX < contX; sizeX++)//item size in X
+                        for (int sizeX = 0; sizeX < contX; sizeX++)
                         {
-                            if ((i + sizeX) < maxGridX && (j + sizeY) < maxGridY && grid[i + sizeX, j + sizeY] != 1)//inside of index
+                            if ((i + sizeX) < maxGridX && (j + sizeY) < maxGridY && grid[i + sizeX, j + sizeY] != 1)
                             {
                                 Vector2 pos;
                                 pos.x = i + sizeX;
@@ -65,16 +72,16 @@ public class InventoryGrid : MonoBehaviour
             }
         }
 
-        if (posItemNaBag.Count == (contX * contY)) // if item already in bag
+        if (posItemNaBag.Count == (contX * contY))
         {
-            ItemSlot newSlot = Instantiate(prefabSlot);
+            ItemSlot newSlot = Instantiate(prefabSlot, itemPlace);
             newSlot.startPosition = new Vector2(posItemNaBag[0].x, posItemNaBag[0].y);
             newSlot.item = item;
             newSlot.icon.sprite = item.icon;
             newSlot.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             newSlot.GetComponent<RectTransform>().anchorMax = new Vector2(0f, 1f);
             newSlot.GetComponent<RectTransform>().anchorMin = new Vector2(0f, 1f);
-            newSlot.transform.SetParent(this.GetComponent<RectTransform>(), false);
+            newSlot.transform.SetParent(itemPlace, false);
             newSlot.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             newSlot.GetComponent<RectTransform>().anchoredPosition = new Vector2(newSlot.startPosition.x * cellSize.x, -newSlot.startPosition.y * cellSize.y);
             itemsInBag.Add(newSlot);
@@ -86,7 +93,6 @@ public class InventoryGrid : MonoBehaviour
                 grid[posToAddX, posToAddY] = 1;
             }
             posItemNaBag.Clear();
-            Debug.Log("COunt: " + itemsInBag.Count);
             return true;
         }
         return false;

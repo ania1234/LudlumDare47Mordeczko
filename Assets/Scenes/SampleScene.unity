@@ -720,6 +720,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 777170177490787475, guid: 5a1f352a98311a442aebb9848d74598c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 777170177490787475, guid: 5a1f352a98311a442aebb9848d74598c,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a1f352a98311a442aebb9848d74598c, type: 3}
 --- !u!1 &256346300842333438 stripped
