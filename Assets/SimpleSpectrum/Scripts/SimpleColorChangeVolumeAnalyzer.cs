@@ -59,33 +59,16 @@ public class SimpleColorChangeVolumeAnalyzer : MonoBehaviour, ICustomVolumeAnaly
 
         if (beat)
         {
-<<<<<<< HEAD
-            if (sprite != null)
-            {
-                sprite.color = endColor; 
-            }
-            else
-=======
+
             if (sprite)
             {
                 sprite.color = endColor;
             }
             if (image)
->>>>>>> Changed volume analyzer to work with UI
             {
                 image.color = endColor;
             }
         }
-<<<<<<< HEAD
-        else {
-            if (sprite != null)
-            {
-                sprite.color = Color.Lerp(sprite.color, startColor, 0.05f); 
-            }
-            else
-            {
-                image.color = Color.Lerp(sprite.color, startColor, 0.05f);
-=======
         else
         {
             if (sprite)
@@ -95,7 +78,6 @@ public class SimpleColorChangeVolumeAnalyzer : MonoBehaviour, ICustomVolumeAnaly
             if (image)
             {
                 image.color = Color.Lerp(image.color, startColor, 0.05f);
->>>>>>> Changed volume analyzer to work with UI
             }
         }
     }
