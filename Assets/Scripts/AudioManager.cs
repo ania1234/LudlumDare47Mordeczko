@@ -19,6 +19,14 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (!audioSource.isPlaying)
+        {
+            ChangeTrack();
+        }
+    }
+
     public void ChangeTrack()
     {
         currentClipIndex = (currentClipIndex + 1) % clips.Count;

@@ -12,7 +12,8 @@ public class OutputVolumeEditor : Editor
 
     SerializedProperty propertyEnabled;
 
-    SerializedProperty propertyKoszyki;
+    SerializedProperty propertysampleStart;
+    SerializedProperty propertysampleEnd;
 
     SerializedProperty propertySourceType;
     SerializedProperty propertyAudioSource;
@@ -40,7 +41,8 @@ public class OutputVolumeEditor : Editor
     void OnEnable()
     {
         propertyEnabled = serializedObject.FindProperty("isEnabled");
-        propertyKoszyki = serializedObject.FindProperty("koszyki");
+        propertysampleStart = serializedObject.FindProperty("sampleStart");
+        propertysampleEnd = serializedObject.FindProperty("sampleEnd");
 
         propertySourceType = serializedObject.FindProperty("sourceType");
         propertyAudioSource = serializedObject.FindProperty("audioSource");
@@ -74,7 +76,8 @@ public class OutputVolumeEditor : Editor
 #endif
 
         EditorGUILayout.PropertyField(propertyEnabled);
-        EditorGUILayout.PropertyField(propertyKoszyki);
+        EditorGUILayout.PropertyField(propertysampleStart);
+        EditorGUILayout.PropertyField(propertysampleEnd);
 
         foldoutSamplingOpen = EditorGUILayout.Foldout(foldoutSamplingOpen, "Sampling Settings");
         if (foldoutSamplingOpen)
