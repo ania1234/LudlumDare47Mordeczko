@@ -7,8 +7,6 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     public InventoryGrid grid;
 
-    public int capacity = 10;
-
     private List<ItemInfo> items = new List<ItemInfo>();
 
     private void Awake()

@@ -12,8 +12,7 @@ public class InventoryGrid : MonoBehaviour
     public Transform itemPlace;
     public GameObject slotPrefab;
 
-    public int maxGridX;
-    int maxGridY;
+    public Vector2 gridSize;
 
     Vector2 cellSize = new Vector2(34f, 34f);
 
@@ -24,11 +23,11 @@ public class InventoryGrid : MonoBehaviour
     {
         inventory = Inventory.instance;
 
-        maxGridY = (int)((inventory.capacity + 1) / maxGridX);
+        grid = new int[(int)gridSize.x, (int)gridSize.y];
 
-        grid = new int[maxGridX, maxGridY];
+        var capacity = gridSize.x * gridSize.y;
 
-        for (int i = 0; i < inventory.capacity; i++)
+        for (int i = 0; i < capacity; i++)
         {
             var itemUI = Instantiate(slotPrefab, gridBackground);
         }
@@ -39,9 +38,9 @@ public class InventoryGrid : MonoBehaviour
         int contX = (int)item.size.x;
         int contY = (int)item.size.y;
 
-        for (int i = 0; i < maxGridX; i++)
+        for (int i = 0; i < gridSize.x; i++)
         {
-            for (int j = 0; j < maxGridY; j++)
+            for (int j = 0; j < gridSize.y; j++)
             {
                 if (posItemNaBag.Count != (contX * contY))
                 {
@@ -49,7 +48,7 @@ public class InventoryGrid : MonoBehaviour
                     {
                         for (int sizeX = 0; sizeX < contX; sizeX++)
                         {
-                            if ((i + sizeX) < maxGridX && (j + sizeY) < maxGridY && grid[i + sizeX, j + sizeY] != 1)
+                            if ((i + sizeX) < gridSize.x && (j + sizeY) < gridSize.y && grid[i + sizeX, j + sizeY] != 1)
                             {
                                 Vector2 pos;
                                 pos.x = i + sizeX;

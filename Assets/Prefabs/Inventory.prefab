@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 5529745803717771352}
-  capacity: 20
 --- !u!1 &979440373891179734
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +101,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 260, y: 130}
+  m_CellSize: {x: 130, y: 100}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -198,7 +197,7 @@ MonoBehaviour:
   itemPlace: {fileID: 8998526520617363652}
   slotPrefab: {fileID: 5232218768681935812, guid: 1b26f4b83c759c34bab3fef4033c552d,
     type: 3}
-  maxGridX: 5
+  gridSize: {x: 11, y: 5}
 --- !u!1 &3566651398632182982
 GameObject:
   m_ObjectHideFlags: 0
