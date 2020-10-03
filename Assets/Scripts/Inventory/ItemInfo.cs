@@ -7,4 +7,5 @@ public class ItemInfo : ScriptableObject
 {
     public new string name;
     public Sprite icon;
+    public Vector2 size;
 }

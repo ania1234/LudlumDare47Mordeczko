@@ -5,16 +5,23 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
+    public InventoryGrid grid;
 
     public int capacity = 10;
 
     private List<ItemInfo> items = new List<ItemInfo>();
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void AddItem(ItemInfo item)
     {
         if (items.Count < capacity)
         {
-            items.Add(item); 
+            items.Add(item);
+            grid.AddInFirstSpace(item);
         }
     }
 
