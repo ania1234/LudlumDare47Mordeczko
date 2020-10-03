@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryGrid : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class InventoryGrid : MonoBehaviour
 
     public List<ItemSlot> itemsInBag = new List<ItemSlot>();
     public ItemSlot prefabSlot;
-    public Transform gridBackground;
+    public GridLayoutGroup gridBackground;
     public Transform itemPlace;
     public GameObject slotPrefab;
 
@@ -16,20 +17,20 @@ public class InventoryGrid : MonoBehaviour
 
     Vector2 cellSize = new Vector2(130f, 100f);
 
-    Inventory inventory;
     List<Vector2> posItemNaBag = new List<Vector2>();
 
     void Start()
     {
-        inventory = Inventory.instance;
+        var rect = GetComponent<RectTransform>();
 
         grid = new int[(int)gridSize.x, (int)gridSize.y];
-
+        cellSize = new Vector2(Screen.width * (rect.anchorMax.x - rect.anchorMin.x) / gridSize.x, Screen.height * (rect.anchorMax.y - rect.anchorMin.y) / gridSize.y);
+        gridBackground.cellSize = cellSize;
         var capacity = gridSize.x * gridSize.y;
 
         for (int i = 0; i < capacity; i++)
         {
-            var itemUI = Instantiate(slotPrefab, gridBackground);
+            Instantiate(slotPrefab, gridBackground.transform);
         }
     }
 
@@ -82,6 +83,7 @@ public class InventoryGrid : MonoBehaviour
             newSlot.GetComponent<RectTransform>().anchorMin = new Vector2(0f, 1f);
             newSlot.transform.SetParent(itemPlace, false);
             newSlot.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            newSlot.size = cellSize;
             newSlot.GetComponent<RectTransform>().anchoredPosition = new Vector2(newSlot.startPosition.x * cellSize.x, -newSlot.startPosition.y * cellSize.y);
             itemsInBag.Add(newSlot);
 

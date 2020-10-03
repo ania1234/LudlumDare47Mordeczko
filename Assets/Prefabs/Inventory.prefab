@@ -174,7 +174,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24085861, y: 0}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 0.8104849, y: 0.1897037}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -193,11 +193,12 @@ MonoBehaviour:
   itemsInBag: []
   prefabSlot: {fileID: 508490453159709984, guid: 055bbce1166e93742944d58b4df4c10d,
     type: 3}
-  gridBackground: {fileID: 2515633107627693532}
+  gridBackground: {fileID: 5376848099033129560}
   itemPlace: {fileID: 8998526520617363652}
   slotPrefab: {fileID: 5232218768681935812, guid: 1b26f4b83c759c34bab3fef4033c552d,
     type: 3}
   gridSize: {x: 11, y: 5}
+  cellSize: {x: 130, y: 100}
 --- !u!1 &3566651398632182982
 GameObject:
   m_ObjectHideFlags: 0
