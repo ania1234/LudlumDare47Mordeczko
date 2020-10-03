@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 
     private string currentItemName;
 
+    public Animator animator;
+
 
     #region signals
     public event Action<int> onHealthChanged = new Action<int>(x => { });
