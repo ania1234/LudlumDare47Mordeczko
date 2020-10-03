@@ -14,7 +14,7 @@ public class InventoryGrid : MonoBehaviour
 
     public Vector2 gridSize;
 
-    Vector2 cellSize = new Vector2(34f, 34f);
+    Vector2 cellSize = new Vector2(130f, 100f);
 
     Inventory inventory;
     List<Vector2> posItemNaBag = new List<Vector2>();

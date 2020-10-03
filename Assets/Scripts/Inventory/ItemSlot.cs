@@ -36,7 +36,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //slots = FindObjectOfType<TetrisSlot>();
     }
 
-    public void OnPointerEnter(PointerEventData eventData) // shows item description
+    public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log(eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.itemName);
         //string title = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.itemName;
