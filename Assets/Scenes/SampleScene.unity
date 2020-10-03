@@ -1462,6 +1462,53 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7155961644569365775, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 7155961644569365775, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -135631383
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ff0737da9f0f7b4da7d4005294479a0,
+        type: 2}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -972240468021988935, guid: 8ff0737da9f0f7b4da7d4005294479a0,
+        type: 2}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 29.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409147, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79d296d2d8aa6b644b13ee655683cfe7, type: 3}
 --- !u!224 &7155961645620127699 stripped
