@@ -13,25 +13,9 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     void Start()
     {
-        #region Rescaling
-        //reescalonar o tamanho do item
-        GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.size.y * size.y);
-        GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.size.x * size.x);
-
-        //foreach (RectTransform child in transform)
-        //{
-        //    child.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.size.y * child.rect.height);
-        //    child.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.size.x * child.rect.width);
-
-        //    foreach (RectTransform iconChild in child)
-        //    {
-        //        iconChild.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.size.y * iconChild.rect.height);
-        //        iconChild.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.size.x * iconChild.rect.width);
-        //        iconChild.localPosition = new Vector2(child.localPosition.x + child.rect.width / 2, child.localPosition.y + child.rect.height / 2 * -1f);
-        //    }
-
-        //}
-        #endregion
+        var rect = GetComponent<RectTransform>();
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.size.y * size.y);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.size.x * size.x);
 
         //slots = FindObjectOfType<TetrisSlot>();
     }

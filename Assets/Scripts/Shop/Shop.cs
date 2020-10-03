@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Shop : MonoBehaviour
 {
+    public bool randomItems = true;
     public List<ItemInfo> items;
     public List<ShopSlot> slots;
     public GameObject slotPlace;
@@ -22,5 +24,25 @@ public class Shop : MonoBehaviour
     private void OnDayTimeChanged(DayTimeEnum value)
     {
         slotPlace.SetActive(value == DayTimeEnum.day);
+        if (value == DayTimeEnum.day)
+        {
+            SetShop(); 
+        }
+    }
+
+    void SetShop()
+    {
+        if (randomItems)
+        {
+            System.Random rnd = new System.Random();
+            var randomizedList = from item in items
+                                 orderby rnd.Next()
+                                 select item;
+            items = randomizedList.ToList();
+        }
+        for (int slot = 0; slot < slots.Count; slot++)
+        {
+            slots[slot].Init(items[slot]);
+        }
     }
 }
