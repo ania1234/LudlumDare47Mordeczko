@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,16 @@ public class Player : MonoBehaviour
 
     public int jumpCount { get; internal set; }
 
+    public int maxHealth;
+
+    public int health { get; private set; }
+
     private string currentItemName;
+
+
+    #region signals
+    public event Action<int> onHealthChanged = new Action<int>(x => { });
+    #endregion
 
     private void Awake()
     {
@@ -34,6 +44,13 @@ public class Player : MonoBehaviour
     public void TakeBeatingFrom(Enemy enemy)
     {
         //TODO: loose health
+        SetHealth(health - 1);
         //TODO: some invincible routine to progress with lost health
+    }
+
+    public void SetHealth(int newValue)
+    {
+        health = Mathf.Min(maxHealth, Mathf.Max(newValue, 0));
+        onHealthChanged(health);
     }
 }

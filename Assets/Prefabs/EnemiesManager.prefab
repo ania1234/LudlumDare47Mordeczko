@@ -101,8 +101,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765043994064441}
   - component: {fileID: 5342765043994064442}
+  - component: {fileID: 1697489307}
   m_Layer: 0
-  m_Name: UniversalTile (6)
+  m_Name: Enemy 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +173,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1697489307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765043994064440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
 --- !u!1 &5342765044029503698
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,8 +197,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765044029503699}
   - component: {fileID: 5342765044029503700}
+  - component: {fileID: 1733226357}
   m_Layer: 0
-  m_Name: UniversalTile (7)
+  m_Name: Enemy 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,6 +269,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1733226357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765044029503698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
 --- !u!1 &5342765044129328203
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,8 +293,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765044129328204}
   - component: {fileID: 5342765044129328205}
+  - component: {fileID: 1832762350}
   m_Layer: 0
-  m_Name: UniversalTile (4)
+  m_Name: Enemy 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,6 +365,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1832762350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765044129328203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
 --- !u!1 &5342765044296073622
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,8 +389,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765044296073623}
   - component: {fileID: 5342765044296073624}
+  - component: {fileID: 1462375993}
   m_Layer: 0
-  m_Name: UniversalTile (3)
+  m_Name: Enemy 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,6 +461,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1462375993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765044296073622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
 --- !u!1 &5342765044476385091
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,8 +516,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765044571129500}
   - component: {fileID: 5342765044571129501}
+  - component: {fileID: 1216811326}
   m_Layer: 0
-  m_Name: UniversalTile (5)
+  m_Name: Enemy 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,6 +588,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1216811326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765044571129499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
 --- !u!1 &5342765045078495661
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,8 +705,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765045305406385}
   - component: {fileID: 5342765045305406386}
+  - component: {fileID: 323167251}
   m_Layer: 0
-  m_Name: UniversalTile (1)
+  m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,6 +777,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &323167251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765045305406384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
 --- !u!1 &5342765045325312365
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,8 +832,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765045328447109}
   - component: {fileID: 5342765045328447110}
+  - component: {fileID: 363024679}
   m_Layer: 0
-  m_Name: UniversalTile (2)
+  m_Name: Enemy 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -813,6 +904,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &363024679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765045328447108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
 --- !u!1 &5342765045350424029
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,8 +990,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5342765045562641515}
   - component: {fileID: 5342765045562641516}
+  - component: {fileID: 61660109}
   m_Layer: 0
-  m_Name: UniversalTile
+  m_Name: Enemy 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -956,3 +1062,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &61660109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342765045562641514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec229c10d3e44548912fa84fe3edd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDormant: 1
+  itemRequiredToKill: 
