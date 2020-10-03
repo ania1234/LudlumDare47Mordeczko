@@ -7,7 +7,23 @@ public class Enemy : MonoBehaviour
     public bool isDormant;
     public string itemRequiredToKill;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator Start()
+    {
+        while (GameManager.instance == null)
+        {
+            yield return null;
+        }
+
+        GameManager.instance.onDayTimeChanged += Instance_onDayTimeChanged;
+    }
+
+    //Tutaj budzi sie przeciwnik
+    private void Instance_onDayTimeChanged(DayTimeEnum obj)
+    {
+        isDormant = obj == DayTimeEnum.day;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDormant)
         {

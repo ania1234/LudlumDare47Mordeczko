@@ -46,13 +46,14 @@ MonoBehaviour:
   spritesToDim:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spritesToFlip:
   - {fileID: 0}
-  dayOnlyGameObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  dayOnlyGameObjects: []
   nightOnlyGameObjects:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

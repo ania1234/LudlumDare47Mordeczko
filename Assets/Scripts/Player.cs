@@ -27,9 +27,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         state = new PlayerState();
-        state.canMove = true;
+        state.canMove = false;
         state.canJump = true;
-
+        health = maxHealth;
         instance = this;
     }
 

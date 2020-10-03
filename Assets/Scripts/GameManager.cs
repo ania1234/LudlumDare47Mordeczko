@@ -37,6 +37,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (levelEnd == null)
+        {
+            levelEnd = GameObject.FindObjectOfType<LevelEnd>();
+        }
+
+        levelNumber = -1;
+        ProgressLevel(levelEnd.teleportPoint);
+    }
+
     public void ProgressLevel(Transform teleportPoint)
     {
         StartCoroutine(ProgressLevelCoroutine(teleportPoint));

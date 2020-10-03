@@ -18,11 +18,11 @@ public class CameraManager : MonoBehaviour
         {
             instance = this;
         }
+        mainCamera = Camera.main;
     }
 
     private IEnumerator Start()
     {
-        mainCamera = Camera.main;
         while (GameManager.instance == null)
         {
             yield return null;
