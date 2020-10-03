@@ -866,6 +866,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3968785471458255904, guid: e282fb773d6350848bce403a2f054e01,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3968785471458255905, guid: e282fb773d6350848bce403a2f054e01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1198,35 +1203,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5673721382828865576, guid: fc08364d16d71e74b800c941951ce5ed,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: -2106504403
-      objectReference: {fileID: 0}
-    - target: {fileID: 5673721382828865576, guid: fc08364d16d71e74b800c941951ce5ed,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5673721382828865577, guid: fc08364d16d71e74b800c941951ce5ed,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5673721382828865590, guid: fc08364d16d71e74b800c941951ce5ed,
-        type: 3}
-      propertyPath: maxJumpCount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5673721382828865591, guid: fc08364d16d71e74b800c941951ce5ed,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5311556
+      value: -7.81
       objectReference: {fileID: 0}
     - target: {fileID: 5673721382828865591, guid: fc08364d16d71e74b800c941951ce5ed,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6612635
+      value: -3.17
       objectReference: {fileID: 0}
     - target: {fileID: 5673721382828865591, guid: fc08364d16d71e74b800c941951ce5ed,
         type: 3}

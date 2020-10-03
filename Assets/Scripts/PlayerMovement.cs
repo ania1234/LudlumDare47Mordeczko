@@ -22,22 +22,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        player.animator.SetBool("IsWalking", player.state.canMove);
+
         if (!player.state.canMove)
         {
             return;
         }
 
-        var xMovement = 1;//Input.GetAxis("Horizontal");
-        var yMovement = Input.GetAxis("Vertical");
+        var xMovement = 1;
 
-        if (xMovement < 0)
-        {
-            player.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else
-        {
-            player.transform.localScale = new Vector3(1, 1, 1);
-        }
+        player.transform.localScale = new Vector3(1, 1, 1);
 
         player.transform.position = player.transform.position + new Vector3(1, 0, 0) * xMovement * horizontalMovementSpeed * Time.fixedDeltaTime;
 
