@@ -121,6 +121,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &323188291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 323188291, guid: 5a1f352a98311a442aebb9848d74598c,
+    type: 3}
+  m_PrefabInstance: {fileID: 256346300842333437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &323188295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323188291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327c5c2481516944cae3a1c1aedc2594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 1
+  sampleStart: 0
+  sampleEnd: 3
+  sourceType: 0
+  audioSource: {fileID: 0}
+  sampleAmount: 256
+  channel: 0
+  attackDamp: 0.75
+  decayDamp: 0.25
+  outputType: 4
+  valueMultiplier: {x: 0, y: 0, z: -90}
+  outputScaleMin: 1
+  outputScaleMax: 1.5
+  prefab: {fileID: 0}
+  scalePrefab: 1
+  useColorGradient: 0
+  MinColor: {r: 0, g: 0, b: 0, a: 1}
+  MaxColor: {r: 1, g: 1, b: 1, a: 1}
+  colorCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  colorAttackDamp: 1
+  colorDecayDamp: 1
+--- !u!114 &323188296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323188291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe41dc7df111ff649bb67b5e4246df22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startColor: {r: 1, g: 1, b: 1, a: 1}
+  endColor: {r: 1, g: 0, b: 0.8916426, a: 1}
+  maxQueue: 42
+  varianceCoefficient: 0
+  constantCoefficient: 0
 --- !u!1 &367183782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1159,7 @@ PrefabInstance:
     - target: {fileID: 3137846723842856200, guid: 2b7da82f93cfb9540b613e49488d667e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10.00002
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3252846834341195409, guid: 2b7da82f93cfb9540b613e49488d667e,
         type: 3}
@@ -1108,7 +1169,7 @@ PrefabInstance:
     - target: {fileID: 3252846834341195409, guid: 2b7da82f93cfb9540b613e49488d667e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10.00002
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5097305037957710500, guid: 2b7da82f93cfb9540b613e49488d667e,
         type: 3}
