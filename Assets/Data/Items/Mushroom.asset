@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   name: Mushroom
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 140ca8e24b433ba4c8b310f3de039046, type: 3}
   size: {x: 3, y: 3}
