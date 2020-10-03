@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        var xMovement = Input.GetAxis("Horizontal");
+        var xMovement = 1;//Input.GetAxis("Horizontal");
         var yMovement = Input.GetAxis("Vertical");
 
         if (xMovement < 0)

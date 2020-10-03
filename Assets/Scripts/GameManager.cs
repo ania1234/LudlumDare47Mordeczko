@@ -31,4 +31,9 @@ public class GameManager : MonoBehaviour
         levelNumber++;
         onPassChanged(levelNumber);
     }
+
+    public void GameOver()
+    {
+
+    }
 }
