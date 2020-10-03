@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ShopNeonSetter : MonoBehaviour
+public class Shop : MonoBehaviour
 {
-    public Image openShop;
-    public Image closeShop;
-    public Image close;
+    public List<ItemInfo> items;
+    public List<ShopSlot> slots;
+    public GameObject slotPlace;
 
     private IEnumerator Start()
     {
@@ -17,12 +16,11 @@ public class ShopNeonSetter : MonoBehaviour
         }
 
         GameManager.instance.onDayTimeChanged += OnDayTimeChanged;
+        OnDayTimeChanged(GameManager.instance.DayTime);
     }
 
     private void OnDayTimeChanged(DayTimeEnum value)
     {
-        openShop.gameObject.SetActive(value == DayTimeEnum.day);
-        closeShop.gameObject.SetActive(value == DayTimeEnum.night);
-        close.gameObject.SetActive(value == DayTimeEnum.night);
+        slotPlace.SetActive(value == DayTimeEnum.day);
     }
 }

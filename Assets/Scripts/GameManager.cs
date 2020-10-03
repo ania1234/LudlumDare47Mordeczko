@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
     //albo jestesmy w trakcie progressu
     public bool canProgressLevel { get; set; } = true;
 
+    private DayTimeEnum currentDayTime;
     public LevelEnd levelEnd { get; set; }
+    public DayTimeEnum DayTime  => currentDayTime;
 
     private void Awake()
     {
@@ -55,7 +57,8 @@ public class GameManager : MonoBehaviour
         levelNumber++;
         onPassChanged(levelNumber);
 
-        onDayTimeChanged(DayTimeEnum.day);
+        currentDayTime = DayTimeEnum.day;
+        onDayTimeChanged(currentDayTime);
         CameraManager.instance.RequestCameraFade(0.4f, false);
         yield return new WaitForSeconds(0.5f);
 
@@ -70,7 +73,8 @@ public class GameManager : MonoBehaviour
 
         if (levelNumber < maxLevelNumber)
         {
-            onDayTimeChanged(DayTimeEnum.night);
+            currentDayTime = DayTimeEnum.night;
+            onDayTimeChanged(currentDayTime);
             Player.instance.state.canMove = true;
             canProgressLevel = true;
         }

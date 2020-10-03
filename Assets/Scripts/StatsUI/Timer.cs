@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour
 
         GameManager.instance.onDayTimeChanged += OnDayTimeChanged;
         GameManager.instance.onDayTimeLeftChanged += OnDayTimeLeftChanged;
+        OnDayTimeChanged(GameManager.instance.DayTime);
     }
 
     private void OnDayTimeLeftChanged(float value)
