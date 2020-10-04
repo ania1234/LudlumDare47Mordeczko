@@ -83,6 +83,11 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             icon.color = Color.gray;
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Obrot!");
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
