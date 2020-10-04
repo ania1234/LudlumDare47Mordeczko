@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDormant: 1
-  itemRequiredToKill: Necklace
+  itemRequiredToKill: Ring
 --- !u!61 &1807891877619485519
 BoxCollider2D:
   m_ObjectHideFlags: 0
