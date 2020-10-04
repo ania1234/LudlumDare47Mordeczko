@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     public Animator heroAnimator;
     public Animator allanimator;
+    public string menuSceneName = "Menu";
+    public string winSceneName = "WinScene";
 
     public int levelNumber { get; private set; }
 
@@ -119,12 +122,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("lose");
+        SceneManager.LoadScene(menuSceneName);
+
+        CameraManager.instance.RequestCameraFade(0.4f, true);
     }
 
     public void GameWin()
     {
-
-        Debug.Log("win");
+        SceneManager.LoadScene(menuSceneName);
+        CameraManager.instance.RequestCameraFade(0.4f, true);
     }
 }
