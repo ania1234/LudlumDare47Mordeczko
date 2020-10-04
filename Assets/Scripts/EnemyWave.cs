@@ -19,7 +19,7 @@ public class EnemyWave : MonoBehaviour
         ChooseWave();
         ShuffleWave();
         SpawnEnemies();
-        //GameManager.instance.dayDuration = timeForThisWave;
+        GameManager.instance.dayDuration = timeForThisWave;
     }
 
     private void SpawnEnemies()
