@@ -33,30 +33,39 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         group.blocksRaycasts = false;
+        capacity.transform.SetParent(grid.itemPlace);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         capacity.transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
-        capacity.transform.SetParent(grid.itemPlace);
+        //Debug.Log(Input.mousePosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Vector2 finalPos = capacity.GetComponent<RectTransform>().anchoredPosition;
+            Vector2 finalPos = Input.mousePosition;
+
+            var rect = grid.GetComponent<RectTransform>();
+            var gridPosMin = new Vector2(Screen.width * (rect.anchorMin.x), Screen.height * (rect.anchorMin.y));
+            var gridPosMax = new Vector2(Screen.width * (rect.anchorMax.x), Screen.height * (rect.anchorMax.y));
+            //Vector2 finalPos = capacity.GetComponent<RectTransform>().anchoredPosition;
+
+            var posAdj = new Vector2(finalPos.x - gridPosMin.x, finalPos.y - gridPosMax.y);
 
             Vector2 finalSlot;
-            finalSlot.x = Mathf.Floor(finalPos.x / grid.CellSize.x);
-            finalSlot.y = Mathf.Floor(-finalPos.y / grid.CellSize.y);
+            finalSlot.x = Mathf.Floor(posAdj.x / grid.CellSize.x);
+            finalSlot.y = Mathf.Floor(-posAdj.y / grid.CellSize.y);
 
-            Debug.Log($"{((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y} {(int)(finalSlot.x) >= 0} {(int)finalSlot.y >= 0}");
+            Debug.Log($"{((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x} {((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y} {(int)(finalSlot.x) >= 0} {(int)finalSlot.y >= 0}");
 
             if (((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x 
                 && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y 
-                && ((int)(finalSlot.x)) >= 0 && (int)finalSlot.y >= 0)
+                && ((int)(finalSlot.x)) >= 0 
+                && (int)finalSlot.y >= 0)
             {
                 List<Vector2> newPosItem = new List<Vector2>();
                 bool fit = false;
