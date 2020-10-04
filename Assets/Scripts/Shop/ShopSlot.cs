@@ -50,30 +50,8 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = Input.mousePosition;
-<<<<<<< HEAD
-
-            var rect = grid.GetComponent<RectTransform>();
-            
-            var gridPosMin = new Vector2(Screen.width * (rect.sizeDelta.x), Screen.height * (rect.anchorMin.y));
-            var gridPosMax = new Vector2(Screen.width * (rect.anchorMax.x), Screen.height * (rect.anchorMax.y));
-            //Vector2 finalPos = capacity.GetComponent<RectTransform>().anchoredPosition;
-
-            var posAdj = new Vector2(finalPos.x - gridPosMin.x, finalPos.y - gridPosMax.y);
-
-            Vector2 finalSlot;
-            finalSlot.x = Mathf.Floor(posAdj.x / grid.CellSize.x);
-            finalSlot.y = Mathf.Floor(-posAdj.y / grid.CellSize.y);
-
-            Debug.Log($"{((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x} {((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y} {(int)(finalSlot.x) >= 0} {(int)finalSlot.y >= 0}");
-
-            if (((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x 
-                && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y 
-                && ((int)(finalSlot.x)) >= 0 
-                && (int)finalSlot.y >= 0)
-=======
             Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(finalPos);
             if(Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
->>>>>>> Refactor inventory
             {
                 Inventory.instance.grid.AddItem(item, (int)gridPosition.x, (int)gridPosition.y);
             }
