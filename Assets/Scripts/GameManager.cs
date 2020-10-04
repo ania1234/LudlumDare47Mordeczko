@@ -78,8 +78,8 @@ public class GameManager : MonoBehaviour
             allanimator.Play(0);
             heroAnimator.SetBool("IsWalking", true);
             yield return new WaitForSeconds(2f);
-            CameraManager.instance.RequestCameraFade(0.4f, true);
-            yield return new WaitForSeconds(0.4f);
+            //CameraManager.instance.RequestCameraFade(0.4f, true);
+            yield return new WaitForSeconds(0.5f);
             camera1.gameObject.SetActive(true);
             camera2.gameObject.SetActive(false);
 
