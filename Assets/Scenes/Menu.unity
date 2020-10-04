@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: 839254252}
   - component: {fileID: 839254251}
   - component: {fileID: 839254250}
+  - component: {fileID: 839254249}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -462,6 +463,18 @@ RectTransform:
   m_AnchoredPosition: {x: 360, y: -13}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &839254249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839254247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c2310ac9e8d024294c9dc1e95d5e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &839254250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,6 +640,7 @@ GameObject:
   - component: {fileID: 1078772265}
   - component: {fileID: 1078772264}
   - component: {fileID: 1078772263}
+  - component: {fileID: 1078772262}
   m_Layer: 5
   m_Name: Help
   m_TagString: Untagged
@@ -653,6 +667,18 @@ RectTransform:
   m_AnchoredPosition: {x: -376, y: -29}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1078772262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078772260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4131110c31456428b75440748782f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1078772263
 MonoBehaviour:
   m_ObjectHideFlags: 0
