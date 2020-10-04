@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
         onPassChanged(levelNumber);
 
         currentDayTime = DayTimeEnum.day;
-        yield return new WaitForEndOfFrame();
         onDayTimeChanged(currentDayTime);
         CameraManager.instance.RequestCameraFade(0.4f, false);
         yield return new WaitForSeconds(0.5f);

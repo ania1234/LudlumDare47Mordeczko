@@ -19,14 +19,7 @@ public class EnemiesManager : MonoBehaviour
     private void Instance_onPassChanged(int obj)
     {
         var currentWave = obj % enemyWaves.Count;
-        if (obj == 2)
-        {
-            Shop.instance.AddItem1();
-        }
-        if (obj == 4)
-        {
-            Shop.instance.AddItem2();
-        }
+
         for (int i = 0; i < enemyWaves.Count; i++)
         {
             if (i == currentWave)
