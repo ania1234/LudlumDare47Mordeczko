@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         if (GameManager.instance != null && GameManager.instance.levelEnd != null)
         {
             float levelProgress = (Player.instance.transform.position.x - GameManager.instance.levelEnd.teleportPoint.position.x) / (GameManager.instance.levelEnd.transform.position.x - GameManager.instance.levelEnd.teleportPoint.position.x);
-            audioSource.volume = Mathf.Lerp(minVolume, 1, (GameManager.instance.levelNumber + levelProgress) / GameManager.instance.maxLevelNumber);
+            audioSource.volume = Mathf.Lerp(minVolume, 1, (levelProgress));
         }
     }
 

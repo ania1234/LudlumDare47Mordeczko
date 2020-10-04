@@ -2209,6 +2209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 871494203}
   - component: {fileID: 871494204}
+  - component: {fileID: 871494205}
   m_Layer: 0
   m_Name: clubbuilding
   m_TagString: Untagged
@@ -2280,6 +2281,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &871494205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871494202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327c5c2481516944cae3a1c1aedc2594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 1
+  sampleStart: 0
+  sampleEnd: 3
+  sourceType: 0
+  audioSource: {fileID: 0}
+  sampleAmount: 256
+  channel: 0
+  attackDamp: 0.75
+  decayDamp: 0.25
+  outputType: 2
+  valueMultiplier: {x: 0, y: 0, z: 90}
+  outputScaleMin: 1
+  outputScaleMax: 1.5
+  prefab: {fileID: 0}
+  scalePrefab: 1
+  useColorGradient: 0
+  MinColor: {r: 0, g: 0, b: 0, a: 1}
+  MaxColor: {r: 1, g: 1, b: 1, a: 1}
+  colorCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  colorAttackDamp: 1
+  colorDecayDamp: 1
 --- !u!1 &882212892
 GameObject:
   m_ObjectHideFlags: 0
@@ -4976,6 +5015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2003941092}
   - component: {fileID: 2003941093}
+  - component: {fileID: 2003941094}
   m_Layer: 0
   m_Name: sign
   m_TagString: Untagged
@@ -5047,6 +5087,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2003941094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003941091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327c5c2481516944cae3a1c1aedc2594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 1
+  sampleStart: 0
+  sampleEnd: 3
+  sourceType: 0
+  audioSource: {fileID: 0}
+  sampleAmount: 256
+  channel: 0
+  attackDamp: 0.75
+  decayDamp: 0.25
+  outputType: 2
+  valueMultiplier: {x: 0, y: 0, z: 90}
+  outputScaleMin: 1
+  outputScaleMax: 1.5
+  prefab: {fileID: 0}
+  scalePrefab: 1
+  useColorGradient: 0
+  MinColor: {r: 0, g: 0, b: 0, a: 1}
+  MaxColor: {r: 1, g: 1, b: 1, a: 1}
+  colorCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  colorAttackDamp: 1
+  colorDecayDamp: 1
 --- !u!1 &2049840268
 GameObject:
   m_ObjectHideFlags: 0
@@ -5741,6 +5819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063874763073581466, guid: da7a7911a17147d47918c40b7a03caef,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 259
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7a7911a17147d47918c40b7a03caef, type: 3}

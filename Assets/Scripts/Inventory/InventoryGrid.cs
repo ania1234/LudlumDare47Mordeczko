@@ -25,7 +25,7 @@ public class InventoryGrid : MonoBehaviour
 
     public Vector2 CellSize { get => cellSize; }
 
-    private List<GameObject> slotPrefabs = new List<GameObject>();
+    public List<GameObject> slotPrefabs = new List<GameObject>();
 
     void Start()
     {
@@ -160,12 +160,47 @@ public class InventoryGrid : MonoBehaviour
         {
             return false;
         }
+        for(int i=0; i< gridSize.y; i++)
+        {
+            for (int ii = 0; ii < gridSize.x; ii++)
+            {
+                if(i< itemMaxYPositionInInventory && i>= itemMinYPositionInInventory && ii< itemMaxXpositionInInventory && ii >= itemMinXPositionInInventory)
+                {
+
+                    if (itemPattern[i - itemMinYPositionInInventory][ii - itemMinXPositionInInventory] == 1)
+                    {
+                        if (grid[ii, i] == 1)
+                        {
+
+                            Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.red;
+                        }
+                        else
+                        {
 
 
-        for(int yPos = itemMinYPositionInInventory; yPos < itemMaxYPositionInInventory; yPos++)
+                            Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.green;
+                        }
+                    }
+                    else
+                    {
+
+                        Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.white;
+                    }
+                }
+                else
+                {
+
+                    Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.white;
+                }
+            }
+
+        }
+
+        for (int yPos = itemMinYPositionInInventory; yPos < itemMaxYPositionInInventory; yPos++)
         {
             for(int xPos = itemMinXPositionInInventory; xPos < itemMaxXpositionInInventory; xPos++)
             {
+
                 if(itemPattern[yPos- itemMinYPositionInInventory][xPos- itemMinXPositionInInventory] == 1 &&
                     grid[xPos, yPos] == 1)
                 {

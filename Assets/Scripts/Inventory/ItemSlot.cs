@@ -127,6 +127,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
         }
         group.blocksRaycasts = true;
+        for (int i = 0; i < Inventory.instance.grid.gridSize.y; i++)
+        {
+            for (int ii = 0; ii < Inventory.instance.grid.gridSize.x; ii++)
+            {
+                Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.white;
+            }
+        }
     }
 
     public void Clicked()

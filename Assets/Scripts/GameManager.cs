@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
             heroAnimator.SetBool("IsWalking", true);
             yield return new WaitForSeconds(2f);
             //CameraManager.instance.RequestCameraFade(0.4f, true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
             camera1.gameObject.SetActive(true);
             camera2.gameObject.SetActive(false);
 
@@ -113,6 +114,13 @@ public class GameManager : MonoBehaviour
             onDayTimeChanged(currentDayTime);
             Player.instance.state.canMove = true;
             canProgressLevel = true;
+            for (int i = 0; i < Inventory.instance.grid.gridSize.y; i++)
+            {
+                for (int ii = 0; ii < Inventory.instance.grid.gridSize.x; ii++)
+                {
+                    Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.white;
+                }
+            }
         }
         else
         {
