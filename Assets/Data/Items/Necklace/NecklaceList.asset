@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d824b34913f74434d8924b036e4baefa, type: 3}
   m_Name: NecklaceList
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 11400000, guid: c282669253e040d48849c9fb1f1f985c, type: 2}
+  - {fileID: 11400000, guid: 4dd52555b6cf6eb499271e663b883be4, type: 2}
+  - {fileID: 11400000, guid: c5826c0e2b9808945ab295654d0aefa5, type: 2}
+  - {fileID: 11400000, guid: 9853b3ba167361348b84b74f1732b71e, type: 2}

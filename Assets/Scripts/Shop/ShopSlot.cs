@@ -42,6 +42,10 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         turnPhase = turnPhase % 4;
         capacity.sprite = items[turnPhase].capacityIcon;
         icon.sprite = items[turnPhase].icon;
+
+        var rect = capacity.GetComponent<RectTransform>();
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].capacityIcon.texture.height);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].capacityIcon.texture.width);
     }
 
     public void Init(ItemInfo[] i)

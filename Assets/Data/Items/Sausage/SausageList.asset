@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d824b34913f74434d8924b036e4baefa, type: 3}
   m_Name: SausageList
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 11400000, guid: e924fde38438d7944a82dc02f160fc72, type: 2}
+  - {fileID: 11400000, guid: 1a0f2444d1e4aeb45a07c4b8f961584e, type: 2}
+  - {fileID: 11400000, guid: 797dab83a4f7ea340a7a7fa1bd7525fa, type: 2}
+  - {fileID: 11400000, guid: 6b49d780b3ae88549b6ae5b34d0eb941, type: 2}

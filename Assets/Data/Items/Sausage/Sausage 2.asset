@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sausage 2
   m_EditorClassIdentifier: 
   name: Sausage
-  icon: {fileID: 21300000, guid: 95a70d7af05a5eb4bb5110bcdc102d33, type: 3}
-  capacityIcon: {fileID: 21300000, guid: 9d5fd778a8eaad74ea1919997997555d, type: 3}
+  icon: {fileID: 21300000, guid: fcda7ded34302eb46abc3027d8dc47a0, type: 3}
+  capacityIcon: {fileID: 21300000, guid: 64f021cef337b3b41a09a09dd55dfc7c, type: 3}
   pattern: '11
 
-    10
+    01
 
     11'

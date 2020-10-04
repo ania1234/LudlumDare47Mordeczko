@@ -156,13 +156,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void Clicked()
     {
-        Player.instance.EquipItem(item);
+        Player.instance.EquipItem(items[turnPhase]);
 
-        var pattern = item.GetPattern();
+        var pattern = items[turnPhase].GetPattern();
 
-        for (int i = 0; i < item.GetYSize(); i++)
+        for (int i = 0; i < items[turnPhase].GetYSize(); i++)
         {
-            for (int j = 0; j < item.GetXSize(); j++)
+            for (int j = 0; j < items[turnPhase].GetXSize(); j++)
             {
                 if (pattern[i][j] == 1)
                 {
