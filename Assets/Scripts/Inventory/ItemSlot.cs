@@ -58,7 +58,8 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//eventData.position;
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
 
         for (int i = 0; i < item.size.y; i++)
         {
@@ -73,19 +74,16 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Vector2 finalPos = GetComponent<RectTransform>().anchoredPosition; //position that the item was dropped on canvas
+            Vector2 finalPos = GetComponent<RectTransform>().anchoredPosition;
 
             Vector2 finalSlot;
-            finalSlot.x = Mathf.Floor(finalPos.x / size.x); //which x slot it is
-            finalSlot.y = Mathf.Floor(-finalPos.y / size.y); //which y slot it is
-            Debug.Log("Slot :" + finalSlot);
+            finalSlot.x = Mathf.Floor(finalPos.x / size.x);
+            finalSlot.y = Mathf.Floor(-finalPos.y / size.y);
 
             if (((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y && ((int)(finalSlot.x)) >= 0 && (int)finalSlot.y >= 0) // test if item is inside slot area
             {
-                List<Vector2> newPosItem = new List<Vector2>(); //new item position in bag
+                List<Vector2> newPosItem = new List<Vector2>();
                 bool fit = false;
-                Debug.Log("Maximo da bag Y é: " + grid.gridSize.y + "Atual foi: " + ((int)(finalSlot.y) + (int)(item.size.y) - 1));
-                Debug.Log("Maximo da bag X é: " + grid.gridSize.x + "Atual foi: " + ((int)(finalSlot.x) + (int)(item.size.x) - 1));
 
                 for (int sizeY = 0; sizeY < item.size.y; sizeY++)
                 {
