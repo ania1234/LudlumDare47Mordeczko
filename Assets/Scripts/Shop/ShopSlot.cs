@@ -41,6 +41,8 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         capacity.transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
         //Debug.Log(Input.mousePosition);
+
+        //Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -48,6 +50,7 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = Input.mousePosition;
+<<<<<<< HEAD
 
             var rect = grid.GetComponent<RectTransform>();
             
@@ -67,44 +70,12 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y 
                 && ((int)(finalSlot.x)) >= 0 
                 && (int)finalSlot.y >= 0)
+=======
+            Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(finalPos);
+            if(Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+>>>>>>> Refactor inventory
             {
-                List<Vector2> newPosItem = new List<Vector2>();
-                bool fit = false;
-
-                for (int sizeY = 0; sizeY < item.size.y; sizeY++)
-                {
-                    for (int sizeX = 0; sizeX < item.size.x; sizeX++)
-                    {
-                        if (grid.grid[(int)finalSlot.x + sizeX, (int)finalSlot.y + sizeY] != 1)
-                        {
-                            Vector2 pos;
-                            pos.x = (int)finalSlot.x + sizeX;
-                            pos.y = (int)finalSlot.y + sizeY;
-                            newPosItem.Add(pos);
-                            fit = true;
-                        }
-                        else
-                        {
-                            fit = false;
-
-                            this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
-                            sizeX = (int)item.size.x;
-                            sizeY = (int)item.size.y;
-                            newPosItem.Clear();
-
-                        }
-
-                    }
-
-                }
-                if (fit)
-                {
-                    Inventory.instance.AddItem(item, newPosItem);
-                }
-                else
-                {
-                    Inventory.instance.AddItem(item);
-                }
+                Inventory.instance.grid.AddItem(item, (int)gridPosition.x, (int)gridPosition.y);
             }
         }
         ReturnToSlot();

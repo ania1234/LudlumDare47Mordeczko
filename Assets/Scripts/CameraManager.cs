@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
     public Color dayBackgroundColor;
     public Color nightBackgroundColor;
 
-    private Camera mainCamera;
+    public Camera mainCamera { get; private set; }
 
     // Start is called before the first frame update
     void Awake()

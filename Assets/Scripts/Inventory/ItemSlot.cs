@@ -19,8 +19,8 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     void Start()
     {
         var rect = GetComponent<RectTransform>();
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.size.y * size.y);
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.size.x * size.x);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.GetYSize() * size.y);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.GetXSize() * size.x);
 
         group = GetComponent<CanvasGroup>();
 
@@ -60,10 +60,10 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
-
-        for (int i = 0; i < item.size.y; i++)
+        //TODO: NO!
+        for (int i = 0; i < item.GetYSize(); i++)
         {
-            for (int j = 0; j < item.size.x; j++)
+            for (int j = 0; j < item.GetXSize(); j++)
             {
                 grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
             }
@@ -74,84 +74,13 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Vector2 finalPos = GetComponent<RectTransform>().anchoredPosition;
-
-            Vector2 finalSlot;
-            finalSlot.x = Mathf.Floor(finalPos.x / size.x);
-            finalSlot.y = Mathf.Floor(-finalPos.y / size.y);
-
-            if (((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y && ((int)(finalSlot.x)) >= 0 && (int)finalSlot.y >= 0) // test if item is inside slot area
+            Vector2 finalPos = Input.mousePosition;
+            Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(finalPos);
+            if (Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
             {
-                List<Vector2> newPosItem = new List<Vector2>();
-                bool fit = false;
-
-                for (int sizeY = 0; sizeY < item.size.y; sizeY++)
-                {
-                    for (int sizeX = 0; sizeX < item.size.x; sizeX++)
-                    {
-                        if (grid.grid[(int)finalSlot.x + sizeX, (int)finalSlot.y + sizeY] != 1)
-                        {
-                            Vector2 pos;
-                            pos.x = (int)finalSlot.x + sizeX;
-                            pos.y = (int)finalSlot.y + sizeY;
-                            newPosItem.Add(pos);
-                            fit = true;
-                        }
-                        else
-                        {
-                            fit = false;
-
-                            this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
-                            sizeX = (int)item.size.x;
-                            sizeY = (int)item.size.y;
-                            newPosItem.Clear();
-
-                        }
-
-                    }
-
-                }
-                if (fit)
-                {
-                    for (int i = 0; i < item.size.y; i++)
-                    {
-                        for (int j = 0; j < item.size.x; j++)
-                        {
-                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
-
-                        }
-                    }
-
-                    for (int i = 0; i < newPosItem.Count; i++)
-                    {
-                        grid.grid[(int)newPosItem[i].x, (int)newPosItem[i].y] = 1;
-                    }
-
-                    this.startPosition = newPosItem[0];
-                    transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(newPosItem[0].x * size.x, -newPosItem[0].y * size.y);
-                }
-                else
-                {
-                    for (int i = 0; i < item.size.y; i++)
-                    {
-                        for (int j = 0; j < item.size.x; j++)
-                        {
-                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 1;
-                        }
-                    }
-                }
+                Inventory.instance.grid.AddItem(item, (int)gridPosition.x, (int)gridPosition.y);
             }
-            else
-            {
-                for (int i = 0; i < item.size.y; i++)
-                {
-                    for (int j = 0; j < item.size.x; j++)
-                    {
-                        grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;    
-                    }
-                }
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
         else
         {
