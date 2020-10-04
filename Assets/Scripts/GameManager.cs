@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
-        SceneManager.LoadScene(menuSceneName);
+        SceneManager.LoadScene(winSceneName);
         CameraManager.instance.RequestCameraFade(0.4f, true);
     }
 }
