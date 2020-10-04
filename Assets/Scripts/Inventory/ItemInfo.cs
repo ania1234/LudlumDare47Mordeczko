@@ -52,4 +52,9 @@ public class ItemInfo : ScriptableObject
     {
         return pattern.Split('\n').Length;
     }
+
+    internal ItemInfo[] ToArray()
+    {
+        throw new NotImplementedException();
+    }
 }

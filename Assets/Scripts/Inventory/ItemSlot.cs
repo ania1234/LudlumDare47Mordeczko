@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Vector2 startPosition;
-    public ItemInfo item;
+    public ItemInfo[] items;
     public Image icon;
     public Vector2 size;
 
@@ -15,16 +15,41 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     private CanvasGroup group;
 
     InventoryGrid grid;
+    public int turnPhase = 0;
+
+    private bool isDragging;
 
     void Start()
     {
         var rect = GetComponent<RectTransform>();
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.GetYSize() * size.y);
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.GetXSize() * size.x);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].GetYSize() * size.y);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].GetXSize() * size.x);
 
         group = GetComponent<CanvasGroup>();
 
         grid = GetComponentInParent<InventoryGrid>();
+    }
+
+    void Update()
+    {
+        if (isDragging)
+        {
+            Debug.Log("Dragging");
+            if (Input.GetMouseButtonDown(1))
+            {
+                Turn();
+            }
+        }
+    }
+
+    private void Turn()
+    {
+        turnPhase++;
+        turnPhase = turnPhase%4;
+        var rect = GetComponent<RectTransform>();
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].GetYSize() * size.y);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].GetXSize() * size.x);
+        icon.sprite = items[turnPhase].icon;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -56,15 +81,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         group.blocksRaycasts = false;
     }
 
+
+
     public void OnDrag(PointerEventData eventData)
     {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
-        var pattern = item.GetPattern();
+        var pattern = items[turnPhase].GetPattern();
 
-        for (int i = 0; i < item.GetYSize(); i++)
+        for (int i = 0; i < items[turnPhase].GetYSize(); i++)
         {
-            for (int j = 0; j < item.GetXSize(); j++)
+            for (int j = 0; j < items[turnPhase].GetXSize(); j++)
             {
                 if (pattern[i][j] == 1)
                 {
@@ -75,7 +102,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
         var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
 
-        if (Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
             icon.color = Color.white;
         }
@@ -84,23 +111,21 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             icon.color = Color.gray;
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("Obrot!");
-        }
+        isDragging = true;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
         icon.color = Color.white;
 
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = Input.mousePosition;
             Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(finalPos);
-            if (Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+            if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
             {
-                Inventory.instance.grid.AddItem(item, (int)gridPosition.x, (int)gridPosition.y);
+                Inventory.instance.grid.AddItem(items, turnPhase, (int)gridPosition.x, (int)gridPosition.y);
             }
             Destroy(gameObject);
         }
