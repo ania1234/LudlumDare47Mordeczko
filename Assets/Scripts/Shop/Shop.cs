@@ -5,10 +5,14 @@ using System.Linq;
 
 public class Shop : MonoBehaviour
 {
+    public static Shop instance;
     public bool randomItems = true;
     public List<ItemInfo> items;
     public List<ShopSlot> slots;
     public GameObject slotPlace;
+
+    public ItemInfo item1ToUnlock;
+    public ItemInfo item2ToUnlock;
 
     private IEnumerator Start()
     {
@@ -16,7 +20,7 @@ public class Shop : MonoBehaviour
         {
             yield return null;
         }
-
+        if (instance == null) instance = this;
         GameManager.instance.onDayTimeChanged += OnDayTimeChanged;
         OnDayTimeChanged(GameManager.instance.DayTime);
     }
@@ -29,7 +33,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            for (int slot = 0; slot < slots.Count; slot++)
+            for (int slot = 0; slot < items.Count; slot++)
             {
                 slots[slot].ReturnToSlot();
             }
@@ -47,7 +51,7 @@ public class Shop : MonoBehaviour
                                  select item;
             items = randomizedList.ToList();
         }
-        for (int slot = 0; slot < slots.Count; slot++)
+        for (int slot = 0; slot < items.Count; slot++)
         {
             slots[slot].Init(items[slot]);
         }

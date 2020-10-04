@@ -112,7 +112,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
-  - {x: 6, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
   - {x: -2, y: 0, z: 0}
   - {x: -4, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
@@ -218,11 +218,11 @@ MonoBehaviour:
   enemiesInThisWaveIndicators3: 030000000300000000000000020000000100000000000000
   spawnedenemyPlaces:
   - {x: -1, y: 0, z: 0}
-  - {x: -3, y: 0, z: 0}
-  - {x: -5, y: 0, z: 0}
+  - {x: -3.5, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
-  - {x: 3, y: 0, z: 0}
-  - {x: 5, y: 0, z: 0}
+  - {x: 3.5, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
   timeForThisWave: 10
 --- !u!1 &5342765045121742782
@@ -272,11 +272,11 @@ MonoBehaviour:
   enemiesInThisWaveIndicators2: 0300000002000000000000000100000002000000
   enemiesInThisWaveIndicators3: 0300000003000000000000000100000000000000
   spawnedenemyPlaces:
-  - {x: -4, y: 0, z: 0}
-  - {x: -2, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
+  - {x: -3, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 4, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
   timeForThisWave: 10
 --- !u!1 &5342765045325312365
@@ -326,11 +326,11 @@ MonoBehaviour:
   enemiesInThisWaveIndicators2: 000000000100000002000000030000000400000004000000
   enemiesInThisWaveIndicators3: 000000000100000002000000030000000400000002000000
   spawnedenemyPlaces:
-  - {x: -5, y: 0, z: 0}
-  - {x: -3, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
+  - {x: -3.5, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
-  - {x: 5, y: 0, z: 0}
-  - {x: 3, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
+  - {x: 3.5, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
   timeForThisWave: 10
@@ -359,7 +359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5342765045526162167}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5342765043646643602}
@@ -377,14 +377,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cbdc0b484878444884b886fb8f0a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInThisWaveIndicators1: 0000000001000000010000000200000002000000
-  enemiesInThisWaveIndicators2: 0200000001000000000000000100000000000000
-  enemiesInThisWaveIndicators3: 0200000001000000020000000000000000000000
+  enemiesInThisWaveIndicators1: 00000000010000000000000002000000
+  enemiesInThisWaveIndicators2: 02000000010000000000000001000000
+  enemiesInThisWaveIndicators3: 02000000010000000200000000000000
   spawnedenemyPlaces:
-  - {x: -4, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
   - {x: -2, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
-  - {x: 4, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
   timeForThisWave: 10
