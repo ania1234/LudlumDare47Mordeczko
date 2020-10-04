@@ -30,12 +30,10 @@ Transform:
   m_Children:
   - {fileID: 5342765044476385092}
   - {fileID: 5342765045526162168}
-  - {fileID: 5342765045325312366}
   - {fileID: 5342765045121742783}
   - {fileID: 5342765045078495662}
+  - {fileID: 5342765045325312366}
   - {fileID: 5342765043966526342}
-  - {fileID: 5342765045350424030}
-  - {fileID: 5342765045198040554}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54,12 +52,10 @@ MonoBehaviour:
   enemyWaves:
   - {fileID: 3656968771455195565}
   - {fileID: 4333266367527196649}
-  - {fileID: 5342813473397342611}
   - {fileID: 4997687222923569425}
   - {fileID: 395982675706400896}
+  - {fileID: 5342813473397342611}
   - {fileID: 6747775293347841508}
-  - {fileID: 4299771326364625048}
-  - {fileID: 94195137389811922}
   enemyPrefabs:
   - {fileID: 1903003047902589884, guid: ee0b85b9d4d26324a81c3b1fad1e233c, type: 3}
   - {fileID: 119741105791085954, guid: 12ba70ded791bfe46838b5fc9be22537, type: 3}
@@ -82,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5342765043966526342
 Transform:
   m_ObjectHideFlags: 0
@@ -109,11 +105,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cbdc0b484878444884b886fb8f0a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInThisWaveIndicators1: 
-  enemiesInThisWaveIndicators2: 
-  enemiesInThisWaveIndicators3: 
-  spawnedenemyPlaces: []
+  enemiesInThisWaveIndicators1: 00000000010000000200000003000000040000000000000002000000
+  enemiesInThisWaveIndicators2: 00000000010000000200000003000000040000000400000003000000
+  enemiesInThisWaveIndicators3: 00000000010000000000000003000000030000000400000004000000
+  spawnedenemyPlaces:
+  - {x: 0, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 4, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
+  - {x: -2, y: 0, z: 0}
+  - {x: -4, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
+  timeForThisWave: 10
 --- !u!1 &5342765044476385091
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5342765044476385092
 Transform:
   m_ObjectHideFlags: 0
@@ -161,10 +165,11 @@ MonoBehaviour:
   enemiesInThisWaveIndicators2: 000000000000000002000000
   enemiesInThisWaveIndicators3: 010000000100000002000000
   spawnedenemyPlaces:
-  - {x: -3, y: 0, z: 0}
+  - {x: -4, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 3, y: 0, z: 0}
+  - {x: 4, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
+  timeForThisWave: 10
 --- !u!1 &5342765045078495661
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5342765045078495662
 Transform:
   m_ObjectHideFlags: 0
@@ -194,7 +199,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5342765043646643602}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &395982675706400896
 MonoBehaviour:
@@ -208,11 +213,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cbdc0b484878444884b886fb8f0a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInThisWaveIndicators1: 
-  enemiesInThisWaveIndicators2: 
-  enemiesInThisWaveIndicators3: 
-  spawnedenemyPlaces: []
+  enemiesInThisWaveIndicators1: 030000000100000001000000000000000200000000000000
+  enemiesInThisWaveIndicators2: 030000000200000002000000000000000100000000000000
+  enemiesInThisWaveIndicators3: 030000000300000000000000020000000100000000000000
+  spawnedenemyPlaces:
+  - {x: -1, y: 0, z: 0}
+  - {x: -3, y: 0, z: 0}
+  - {x: -5, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
+  - {x: 5, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
+  timeForThisWave: 10
 --- !u!1 &5342765045121742782
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5342765045121742783
 Transform:
   m_ObjectHideFlags: 0
@@ -242,7 +254,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5342765043646643602}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4997687222923569425
 MonoBehaviour:
@@ -256,59 +268,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cbdc0b484878444884b886fb8f0a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInThisWaveIndicators1: 
-  enemiesInThisWaveIndicators2: 
-  enemiesInThisWaveIndicators3: 
-  spawnedenemyPlaces: []
+  enemiesInThisWaveIndicators1: 0000000001000000020000000300000000000000
+  enemiesInThisWaveIndicators2: 0300000002000000000000000100000002000000
+  enemiesInThisWaveIndicators3: 0300000003000000000000000100000000000000
+  spawnedenemyPlaces:
+  - {x: -4, y: 0, z: 0}
+  - {x: -2, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 4, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
---- !u!1 &5342765045198040553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5342765045198040554}
-  - component: {fileID: 94195137389811922}
-  m_Layer: 0
-  m_Name: Wave (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5342765045198040554
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5342765045198040553}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5342765043646643602}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &94195137389811922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5342765045198040553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cbdc0b484878444884b886fb8f0a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemiesInThisWaveIndicators1: 
-  enemiesInThisWaveIndicators2: 
-  enemiesInThisWaveIndicators3: 
-  spawnedenemyPlaces: []
-  manager: {fileID: 5342765043646643601}
+  timeForThisWave: 10
 --- !u!1 &5342765045325312365
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5342765045325312366
 Transform:
   m_ObjectHideFlags: 0
@@ -338,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5342765043646643602}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5342813473397342611
 MonoBehaviour:
@@ -352,59 +322,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cbdc0b484878444884b886fb8f0a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInThisWaveIndicators1: 
-  enemiesInThisWaveIndicators2: 
-  enemiesInThisWaveIndicators3: 
-  spawnedenemyPlaces: []
+  enemiesInThisWaveIndicators1: 000000000100000002000000030000000400000000000000
+  enemiesInThisWaveIndicators2: 000000000100000002000000030000000400000004000000
+  enemiesInThisWaveIndicators3: 000000000100000002000000030000000400000002000000
+  spawnedenemyPlaces:
+  - {x: -5, y: 0, z: 0}
+  - {x: -3, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 5, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
---- !u!1 &5342765045350424029
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5342765045350424030}
-  - component: {fileID: 4299771326364625048}
-  m_Layer: 0
-  m_Name: Wave (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5342765045350424030
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5342765045350424029}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5342765043646643602}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4299771326364625048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5342765045350424029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cbdc0b484878444884b886fb8f0a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemiesInThisWaveIndicators1: 
-  enemiesInThisWaveIndicators2: 
-  enemiesInThisWaveIndicators3: 
-  spawnedenemyPlaces: []
-  manager: {fileID: 5342765043646643601}
+  timeForThisWave: 10
 --- !u!1 &5342765045526162167
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5342765045526162168
 Transform:
   m_ObjectHideFlags: 0
@@ -449,8 +378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesInThisWaveIndicators1: 0000000001000000010000000200000002000000
-  enemiesInThisWaveIndicators2: 0200000001000000000000000000000000000000
-  enemiesInThisWaveIndicators3: 0200000002000000020000000100000000000000
+  enemiesInThisWaveIndicators2: 0200000001000000000000000100000000000000
+  enemiesInThisWaveIndicators3: 0200000001000000020000000000000000000000
   spawnedenemyPlaces:
   - {x: -4, y: 0, z: 0}
   - {x: -2, y: 0, z: 0}
@@ -458,3 +387,4 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
+  timeForThisWave: 10

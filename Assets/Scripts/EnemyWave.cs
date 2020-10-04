@@ -12,12 +12,14 @@ public class EnemyWave : MonoBehaviour
     private List<int> choosenWave;
     public List<Vector3> spawnedenemyPlaces;
     public EnemiesManager manager;
+    public int timeForThisWave;
     public void StartWave()
     {
         random = new System.Random();
         ChooseWave();
         ShuffleWave();
         SpawnEnemies();
+        GameManager.instance.dayDuration = timeForThisWave;
     }
 
     private void SpawnEnemies()
@@ -28,7 +30,7 @@ public class EnemyWave : MonoBehaviour
 
             var enemy = Instantiate(manager.enemyPrefabs[e]);
             enemy.transform.parent = this.transform;
-            enemy.transform.localScale = new Vector3(1, 1, 1);
+            enemy.transform.localScale = new Vector3(0.5f, 0.5f, 1);
             enemy.transform.localPosition = spawnedenemyPlaces[i];
             i++;
 

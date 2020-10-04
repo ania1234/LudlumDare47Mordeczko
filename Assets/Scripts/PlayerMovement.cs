@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         var xMovement = 1;
 
-        player.transform.localScale = new Vector3(1, 1, 1);
+        player.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
         player.transform.position = player.transform.position + new Vector3(1, 0, 0) * xMovement * horizontalMovementSpeed * Time.fixedDeltaTime;
 
