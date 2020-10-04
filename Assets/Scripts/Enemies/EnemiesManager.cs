@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemiesManager : MonoBehaviour
 {
-    public List<GameObject> enemyWaves;
-
+    public List<EnemyWave> enemyWaves;
+    public List<Enemy> enemyPrefabs;
     private IEnumerator Start()
     {
         while (GameManager.instance == null)
@@ -14,7 +14,6 @@ public class EnemiesManager : MonoBehaviour
         }
         GameManager.instance.onPassChanged += Instance_onPassChanged;
 
-        enemyWaves[0].SetActive(true);
     }
 
     private void Instance_onPassChanged(int obj)
@@ -23,7 +22,17 @@ public class EnemiesManager : MonoBehaviour
 
         for (int i = 0; i < enemyWaves.Count; i++)
         {
-            enemyWaves[i].SetActive(i==currentWave);
+            if (i == currentWave)
+            {
+                enemyWaves[i].gameObject.SetActive(true);
+                enemyWaves[i].StartWave();
+
+            }
+            else
+            {
+
+                enemyWaves[i].gameObject.SetActive(false);
+            }
         }
     }
 }
