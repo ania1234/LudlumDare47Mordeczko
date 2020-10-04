@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+
 
 public class Shop : MonoBehaviour
 {
     public static Shop instance;
     public bool randomItems = true;
-    public List<ItemInfo> items;
+    public List<ListOfItems> items;
     public List<ShopSlot> slots;
     public GameObject slotPlace;
 
-    public ItemInfo item1ToUnlock;
-    public ItemInfo item2ToUnlock;
+    public ListOfItems item1ToUnlock;
+    public ListOfItems item2ToUnlock;
 
     private IEnumerator Start()
     {
@@ -53,7 +55,7 @@ public class Shop : MonoBehaviour
         }
         for (int slot = 0; slot < items.Count; slot++)
         {
-            slots[slot].Init(items[slot]);
+            slots[slot].Init(items[slot].items);
         }
     }
 }

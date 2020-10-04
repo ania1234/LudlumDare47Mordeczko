@@ -42,8 +42,9 @@ public class InventoryGrid : MonoBehaviour
         }
     }
 
-    internal bool AddItem(ItemInfo item, int x, int y)
+    internal bool AddItem(ItemInfo[] items, int turnPhase, int x, int y)
     {
+        var item = items[turnPhase];
         if(!CanItemBePlacedAtPosition(item, x, y))
         {
             return false;
@@ -51,7 +52,8 @@ public class InventoryGrid : MonoBehaviour
 
         ItemSlot newSlot = Instantiate(prefabSlot, itemPlace);
         newSlot.startPosition = new Vector2(x, y);
-        newSlot.item = item;
+        newSlot.items = items;
+        newSlot.turnPhase = turnPhase;
         newSlot.icon.sprite = item.icon;
         newSlot.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         newSlot.GetComponent<RectTransform>().anchorMax = new Vector2(0f, 1f);

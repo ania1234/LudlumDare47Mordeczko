@@ -12,7 +12,12 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private Vector2 oldPosition;
     private CanvasGroup group;
-    ItemInfo item;
+    ItemInfo[] items;
+
+    private bool isDragging;
+    private bool shouldTurn;
+
+    int turnPhase = 0;
 
     private void Awake()
     {
@@ -20,11 +25,35 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         oldPosition = capacity.GetComponent<RectTransform>().anchoredPosition;
     }
 
-    public void Init(ItemInfo i)
+    void Update()
     {
-        capacity.sprite = i.capacityIcon;
-        icon.sprite = i.icon;
-        item = i;
+        if (isDragging )
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                Turn();
+            }
+        }
+    }
+
+    private void Turn()
+    {
+        turnPhase++;
+        turnPhase = turnPhase % 4;
+        capacity.sprite = items[turnPhase].capacityIcon;
+        icon.sprite = items[turnPhase].icon;
+
+        var rect = capacity.GetComponent<RectTransform>();
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].capacityIcon.texture.height);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].capacityIcon.texture.width);
+    }
+
+    public void Init(ItemInfo[] i)
+    {
+        turnPhase = 0;
+        capacity.sprite = i[turnPhase].capacityIcon;
+        icon.sprite = i[turnPhase].icon;
+        items = i;
 
         group.blocksRaycasts = true;
         ReturnToSlot();
@@ -43,7 +72,7 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //Debug.Log(Input.mousePosition);
 
         var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
-        if (Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
             icon.color = Color.white;
             capacity.color = Color.white;
@@ -53,19 +82,22 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             icon.color = Color.gray;
             capacity.color = Color.red;
         }
+
+        isDragging = true;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
         icon.color = Color.white;
         capacity.color = Color.white;
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = Input.mousePosition;
             Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(finalPos);
-            if(Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+            if(Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
             {
-                Inventory.instance.grid.AddItem(item, (int)gridPosition.x, (int)gridPosition.y);
+                Inventory.instance.grid.AddItem(items, turnPhase, (int)gridPosition.x, (int)gridPosition.y);
             }
         }
         ReturnToSlot();
