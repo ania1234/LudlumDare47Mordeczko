@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
     {
         //TODO: loose health
         SetHealth(health - 1);
+        if (health == 0)
+        {
+            GameManager.instance.GameOver();
+        }
         //TODO: some invincible routine to progress with lost health
     }
 

@@ -62,28 +62,37 @@ public class GameManager : MonoBehaviour
     /// Coroutine of most importance
     /// </summary>
     /// <param name="teleportPoint">damn</param>
+    /// 
+    public bool firsttime = true;
     private IEnumerator ProgressLevelCoroutine(Transform teleportPoint)
     {
         canProgressLevel = false;
         Player.instance.state.canMove = false;
+        Player.instance.SetHealth( Player.instance.maxHealth);
+        if (!firsttime)
+        {
+            CameraManager.instance.RequestCameraFade(0.4f, true);
+            yield return new WaitForSeconds(0.4f);
+            camera1.gameObject.SetActive(false);
+            camera2.gameObject.SetActive(true);
+            allanimator.Play(0);
+            heroAnimator.SetBool("IsWalking", true);
+            yield return new WaitForSeconds(2f);
+            CameraManager.instance.RequestCameraFade(0.4f, true);
+            yield return new WaitForSeconds(0.4f);
+            camera1.gameObject.SetActive(true);
+            camera2.gameObject.SetActive(false);
 
-        CameraManager.instance.RequestCameraFade(0.4f, true);
-        yield return new WaitForSeconds(0.4f);
-        camera1.gameObject.SetActive(false);
-        camera2.gameObject.SetActive(true);
-        allanimator.Play(0);
-        heroAnimator.SetBool("IsWalking", true);
-        yield return new WaitForSeconds(3f);
-        camera1.gameObject.SetActive(true);
-        camera2.gameObject.SetActive(false);
-
+        }
+        yield return new WaitForSeconds(0.6f);
+        CameraManager.instance.RequestCameraFade(0.4f, false);
         Player.instance.gameObject.transform.position = teleportPoint.position;
+        firsttime = false;
         levelNumber++;
         onPassChanged(levelNumber);
 
         currentDayTime = DayTimeEnum.day;
         onDayTimeChanged(currentDayTime);
-        CameraManager.instance.RequestCameraFade(0.4f, false);
         yield return new WaitForSeconds(0.5f);
 
         var waitEOF = new WaitForEndOfFrame();
@@ -110,11 +119,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-
+        Debug.Log("lose");
     }
 
     public void GameWin()
     {
 
+        Debug.Log("win");
     }
 }
