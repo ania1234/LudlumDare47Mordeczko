@@ -26,7 +26,7 @@ public class InventoryGrid : MonoBehaviour
         var rect = GetComponent<RectTransform>();
 
         grid = new int[(int)gridSize.x, (int)gridSize.y];
-        cellSize = new Vector2(Screen.width * (rect.anchorMax.x - rect.anchorMin.x) / gridSize.x, Screen.height * (rect.anchorMax.y - rect.anchorMin.y) / gridSize.y);
+        cellSize = new Vector2(GetComponent<RectTransform>().sizeDelta.x / gridSize.x, GetComponent<RectTransform>().sizeDelta.y / gridSize.y);
         gridBackground.cellSize = cellSize;
         var capacity = gridSize.x * gridSize.y;
 
