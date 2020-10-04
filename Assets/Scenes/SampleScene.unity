@@ -222,7 +222,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.250221
+  orthographic size: 5.9925795
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.88, y: -2.13, z: -10}
+  m_LocalPosition: {x: -1.88, y: -1.87, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1612,6 +1612,11 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -135631383
       objectReference: {fileID: 0}
+    - target: {fileID: 7155961644569365775, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
         type: 3}
       propertyPath: m_fontAsset
@@ -1627,12 +1632,12 @@ PrefabInstance:
     - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 4
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
         type: 3}
@@ -1642,7 +1647,27 @@ PrefabInstance:
     - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
         type: 3}
       propertyPath: m_fontSize
-      value: 29.15
+      value: 19.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_text
+      value: level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155961645980409144, guid: 79d296d2d8aa6b644b13ee655683cfe7,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7155961645980409147, guid: 79d296d2d8aa6b644b13ee655683cfe7,
         type: 3}

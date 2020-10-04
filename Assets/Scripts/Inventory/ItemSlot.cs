@@ -175,7 +175,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             //}
 
         }
-        group.blocksRaycasts = true; //register hit on item again
+        group.blocksRaycasts = true;
     }
 
     public void Clicked()
