@@ -114,11 +114,22 @@ public class InventoryGrid : MonoBehaviour
         var gridPositionY = Math.Floor( (float)slotPrefabIndex / gridSize.x);
         var result = new Vector2(gridPositionX, (int)gridPositionY);
         Debug.Log($"Slot prefab: {slotPrefabIndex} Distance: {minDistance} Result: {result}");
+
+        if (minDistance > 50)
+        {
+            return new Vector2(-1, -1);
+        }
+
         return result;
     }
 
     public bool CanItemBePlacedAtPosition(ItemInfo item, int x, int y)
     {
+        if(x<0 || y < 0)
+        {
+            return false;
+        }
+
         var itemPattern = item.GetPattern();
 
 

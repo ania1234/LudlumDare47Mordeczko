@@ -72,10 +72,23 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 }
             }
         }
+
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+        {
+            icon.color = Color.white;
+        }
+        else
+        {
+            icon.color = Color.gray;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        icon.color = Color.white;
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = Input.mousePosition;
