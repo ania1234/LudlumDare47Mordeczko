@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,14 @@ public class Inventory : MonoBehaviour
         if (items.Contains(item))
         {
             items.Remove(item);
+        }
+    }
+
+    internal void AddItem(ItemInfo item, List<Vector2> newPosItem)
+    {
+        if (grid.AddItem(item, newPosItem))
+        {
+            items.Add(item);
         }
     }
 }

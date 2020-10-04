@@ -23,11 +23,18 @@ public class Shop : MonoBehaviour
 
     private void OnDayTimeChanged(DayTimeEnum value)
     {
-        slotPlace.SetActive(value == DayTimeEnum.day);
         if (value == DayTimeEnum.day)
         {
             SetShop(); 
         }
+        else
+        {
+            for (int slot = 0; slot < slots.Count; slot++)
+            {
+                slots[slot].ReturnToSlot();
+            }
+        }
+        slotPlace.SetActive(value == DayTimeEnum.day);
     }
 
     void SetShop()
