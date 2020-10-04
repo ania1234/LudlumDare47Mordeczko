@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public int maxLevelNumber = 7;
 
     public static GameManager instance;
+    public Camera camera1;
+    public Camera camera2;
+
+    public Animator heroAnimator;
+    public Animator allanimator;
 
     public int levelNumber { get; private set; }
 
@@ -63,7 +68,15 @@ public class GameManager : MonoBehaviour
         Player.instance.state.canMove = false;
 
         CameraManager.instance.RequestCameraFade(0.4f, true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
+        camera1.gameObject.SetActive(false);
+        camera2.gameObject.SetActive(true);
+        allanimator.Play(0);
+        heroAnimator.SetBool("IsWalking", true);
+        yield return new WaitForSeconds(3f);
+        camera1.gameObject.SetActive(true);
+        camera2.gameObject.SetActive(false);
+
         Player.instance.gameObject.transform.position = teleportPoint.position;
         levelNumber++;
         onPassChanged(levelNumber);
