@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Vector2 startPosition;
     public ItemInfo item;
@@ -131,15 +131,28 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void Clicked()
     {
-        //if (item.usable)
-        //{
-        //    item.Use();
+        Player.instance.EquipItem(item);
 
+        var pattern = item.GetPattern();
 
-        //    Destroy(this.gameObject); //item drop
-        //    Functionalities descript = FindObjectOfType<Functionalities>();
+        for (int i = 0; i < item.GetYSize(); i++)
+        {
+            for (int j = 0; j < item.GetXSize(); j++)
+            {
+                if (pattern[i][j] == 1)
+                {
+                    grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                }
+            }
+        }
+        Destroy(gameObject);
+    }
 
-        //    descript.changeDescription("", "", 0, "");//clean description
-        //}
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount == 2)
+        {
+            Clicked();
+        }
     }
 }
