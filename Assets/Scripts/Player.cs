@@ -9,11 +9,23 @@ public class Player : MonoBehaviour
 
     public static Player instance;
 
+    public SpriteRenderer itemSprite;
+
     public int jumpCount { get; internal set; }
 
     public int maxHealth;
 
     public int health { get; private set; }
+    private string CurrentItemName { 
+        get => currentItemName;
+        set {
+            currentItemName = value;
+            if (string.IsNullOrEmpty(value))
+            {
+                itemSprite.enabled = false;
+            }
+        }
+    }
 
     private string currentItemName;
 
@@ -35,12 +47,19 @@ public class Player : MonoBehaviour
 
     public bool HasItemEquipped(string itemName)
     {
-        return currentItemName == itemName;
+        var answer = CurrentItemName == itemName;
+        if (answer)
+        {
+            CurrentItemName = "";
+        }
+        return answer;
     }
 
     public void EquipItem(ItemInfo item)
     {
-        currentItemName = item.name;
+        CurrentItemName = item.name;
+        itemSprite.enabled = true;
+        itemSprite.sprite = item.icon;
     }
 
     public void TakeBeatingFrom(Enemy enemy)
