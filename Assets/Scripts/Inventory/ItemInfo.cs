@@ -14,8 +14,15 @@ public class ItemInfo : ScriptableObject
     [TextArea(4,4)]
     public string pattern;
 
+    private List<int[]> arrayPattern = null;
+
     public List<int[]> GetPattern()
     {
+        if (arrayPattern != null)
+        {
+            return arrayPattern;
+        }
+
         List<int[]> result = new List<int[]>();
         var lines = pattern.Split('\n');
         for (int i = 0; i < lines.Length; i++)
@@ -31,7 +38,9 @@ public class ItemInfo : ScriptableObject
                 result.Add(lineAsInt);
             }
         }
-        return result;
+
+        arrayPattern = result;
+        return arrayPattern;
     }
 
     internal float GetXSize()

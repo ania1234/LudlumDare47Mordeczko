@@ -144,7 +144,7 @@ public class InventoryGrid : MonoBehaviour
 
         if(
             itemMinXPositionInInventory<0 || itemMinYPositionInInventory<0 ||
-            itemMaxXpositionInInventory>=gridSize.x || itemMaxYPositionInInventory>=gridSize.y
+            itemMaxXpositionInInventory>gridSize.x || itemMaxYPositionInInventory>gridSize.y
             )
         {
             return false;

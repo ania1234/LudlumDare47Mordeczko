@@ -60,12 +60,16 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
-        //TODO: NO!
+        var pattern = item.GetPattern();
+
         for (int i = 0; i < item.GetYSize(); i++)
         {
             for (int j = 0; j < item.GetXSize(); j++)
             {
-                grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                if (pattern[i][j] == 1)
+                {
+                    grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                }
             }
         }
     }
