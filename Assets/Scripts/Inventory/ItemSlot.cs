@@ -100,9 +100,8 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                         else
                         {
                             fit = false;
-                            Debug.Log("nao deu" + startPosition);
 
-                            this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition; //back to old pos
+                            this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
                             sizeX = (int)item.size.x;
                             sizeY = (int)item.size.y;
                             newPosItem.Clear();
@@ -113,40 +112,45 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
                 }
                 if (fit)
-                { //delete old item position in bag
-                    for (int i = 0; i < item.size.y; i++) //through item Y
+                {
+                    for (int i = 0; i < item.size.y; i++)
                     {
-                        for (int j = 0; j < item.size.x; j++) //through item X
+                        for (int j = 0; j < item.size.x; j++)
                         {
-                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0; //clean old pos
+                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
 
                         }
                     }
 
                     for (int i = 0; i < newPosItem.Count; i++)
                     {
-                        grid.grid[(int)newPosItem[i].x, (int)newPosItem[i].y] = 1; // add new pos
+                        grid.grid[(int)newPosItem[i].x, (int)newPosItem[i].y] = 1;
                     }
 
-                    this.startPosition = newPosItem[0]; // set new start position
+                    this.startPosition = newPosItem[0];
                     transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(newPosItem[0].x * size.x, -newPosItem[0].y * size.y);
-                    Debug.Log("Position: " + transform.GetComponent<RectTransform>().anchoredPosition);
                 }
-                else //item voltou pra mesma posição da bag e marca com 1
+                else
                 {
-                    for (int i = 0; i < item.size.y; i++) //through item Y
+                    for (int i = 0; i < item.size.y; i++)
                     {
-                        for (int j = 0; j < item.size.x; j++) //through item X
+                        for (int j = 0; j < item.size.x; j++)
                         {
-                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 1; //back to position 1;
-
+                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 1;
                         }
                     }
                 }
             }
             else
-            { // out of index, back to the old pos
-                this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
+            {
+                for (int i = 0; i < item.size.y; i++)
+                {
+                    for (int j = 0; j < item.size.x; j++)
+                    {
+                        grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;    
+                    }
+                }
+                Destroy(gameObject);
             }
         }
         else
@@ -179,13 +183,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //if (item.usable)
         //{
         //    item.Use();
-        //    for (int i = 0; i < item.itemSize.y; i++) //through Y size of item
-        //    {
-        //        for (int j = 0; j < item.itemSize.x; j++) //through X size of item
-        //        {
-        //            slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0; //clean the old item position                                                                   
-        //        }
-        //    }
+
 
         //    Destroy(this.gameObject); //item drop
         //    Functionalities descript = FindObjectOfType<Functionalities>();

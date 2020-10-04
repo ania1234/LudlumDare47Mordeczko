@@ -17,7 +17,7 @@ public class InventoryGrid : MonoBehaviour
 
     Vector2 cellSize = new Vector2(130f, 100f);
 
-    List<Vector2> posItemNaBag = new List<Vector2>();
+    List<Vector2> posItemInBag = new List<Vector2>();
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class InventoryGrid : MonoBehaviour
         }
     }
 
-    public bool AddInFirstSpace(ItemInfo item)
+    public bool AddItem(ItemInfo item)
     {
         int contX = (int)item.size.x;
         int contY = (int)item.size.y;
@@ -43,7 +43,7 @@ public class InventoryGrid : MonoBehaviour
         {
             for (int j = 0; j < gridSize.y; j++)
             {
-                if (posItemNaBag.Count != (contX * contY))
+                if (posItemInBag.Count != (contX * contY))
                 {
                     for (int sizeY = 0; sizeY < contY; sizeY++)
                     {
@@ -54,13 +54,13 @@ public class InventoryGrid : MonoBehaviour
                                 Vector2 pos;
                                 pos.x = i + sizeX;
                                 pos.y = j + sizeY;
-                                posItemNaBag.Add(pos);
+                                posItemInBag.Add(pos);
                             }
                             else
                             {
                                 sizeX = contX;
                                 sizeY = contY;
-                                posItemNaBag.Clear();
+                                posItemInBag.Clear();
                             }
                         }
                     }
@@ -72,10 +72,10 @@ public class InventoryGrid : MonoBehaviour
             }
         }
 
-        if (posItemNaBag.Count == (contX * contY))
+        if (posItemInBag.Count == (contX * contY))
         {
             ItemSlot newSlot = Instantiate(prefabSlot, itemPlace);
-            newSlot.startPosition = new Vector2(posItemNaBag[0].x, posItemNaBag[0].y);
+            newSlot.startPosition = new Vector2(posItemInBag[0].x, posItemInBag[0].y);
             newSlot.item = item;
             newSlot.icon.sprite = item.icon;
             newSlot.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -87,13 +87,13 @@ public class InventoryGrid : MonoBehaviour
             newSlot.GetComponent<RectTransform>().anchoredPosition = new Vector2(newSlot.startPosition.x * cellSize.x, -newSlot.startPosition.y * cellSize.y);
             itemsInBag.Add(newSlot);
 
-            for (int k = 0; k < posItemNaBag.Count; k++) //upgrade matrix
+            for (int k = 0; k < posItemInBag.Count; k++) //upgrade matrix
             {
-                int posToAddX = (int)posItemNaBag[k].x;
-                int posToAddY = (int)posItemNaBag[k].y;
+                int posToAddX = (int)posItemInBag[k].x;
+                int posToAddY = (int)posItemInBag[k].y;
                 grid[posToAddX, posToAddY] = 1;
             }
-            posItemNaBag.Clear();
+            posItemInBag.Clear();
             return true;
         }
         return false;
