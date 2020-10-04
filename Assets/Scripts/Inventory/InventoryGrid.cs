@@ -19,6 +19,8 @@ public class InventoryGrid : MonoBehaviour
 
     List<Vector2> posItemInBag = new List<Vector2>();
 
+    public Vector2 CellSize { get => cellSize; }
+
     void Start()
     {
         var rect = GetComponent<RectTransform>();
