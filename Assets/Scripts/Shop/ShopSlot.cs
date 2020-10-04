@@ -50,7 +50,8 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             Vector2 finalPos = Input.mousePosition;
 
             var rect = grid.GetComponent<RectTransform>();
-            var gridPosMin = new Vector2(Screen.width * (rect.anchorMin.x), Screen.height * (rect.anchorMin.y));
+            
+            var gridPosMin = new Vector2(Screen.width * (rect.sizeDelta.x), Screen.height * (rect.anchorMin.y));
             var gridPosMax = new Vector2(Screen.width * (rect.anchorMax.x), Screen.height * (rect.anchorMax.y));
             //Vector2 finalPos = capacity.GetComponent<RectTransform>().anchoredPosition;
 
@@ -60,7 +61,7 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             finalSlot.x = Mathf.Floor(posAdj.x / grid.CellSize.x);
             finalSlot.y = Mathf.Floor(-posAdj.y / grid.CellSize.y);
 
-            //Debug.Log($"{((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x} {((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y} {(int)(finalSlot.x) >= 0} {(int)finalSlot.y >= 0}");
+            Debug.Log($"{((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x} {((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y} {(int)(finalSlot.x) >= 0} {(int)finalSlot.y >= 0}");
 
             if (((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x 
                 && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y 
