@@ -13,12 +13,11 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Vector2 oldPosition;
     private CanvasGroup group;
     ItemInfo item;
-    private Vector2 startPosition;
 
     private void Awake()
     {
         group = GetComponent<CanvasGroup>();
-        
+        oldPosition = capacity.GetComponent<RectTransform>().anchoredPosition;
     }
 
     public void Init(ItemInfo i)
@@ -28,40 +27,45 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         item = i;
 
         group.blocksRaycasts = true;
+        ReturnToSlot();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        oldPosition = transform.GetComponent<RectTransform>().anchoredPosition;
-
         group.blocksRaycasts = false;
+        capacity.transform.SetParent(grid.itemPlace);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
-
-        for (int i = 0; i < item.size.y; i++)
-        {
-            for (int j = 0; j < item.size.x; j++)
-            {
-                grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
-            }
-        }
+        capacity.transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
+        //Debug.Log(Input.mousePosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Vector2 finalPos = GetComponent<RectTransform>().anchoredPosition;
+            Vector2 finalPos = Input.mousePosition;
+
+            var rect = grid.GetComponent<RectTransform>();
+            var gridPosMin = new Vector2(Screen.width * (rect.anchorMin.x), Screen.height * (rect.anchorMin.y));
+            var gridPosMax = new Vector2(Screen.width * (rect.anchorMax.x), Screen.height * (rect.anchorMax.y));
+            //Vector2 finalPos = capacity.GetComponent<RectTransform>().anchoredPosition;
+
+            var posAdj = new Vector2(finalPos.x - gridPosMin.x, finalPos.y - gridPosMax.y);
 
             Vector2 finalSlot;
-            finalSlot.x = Mathf.Floor(finalPos.x / grid.CellSize.x);
-            finalSlot.y = Mathf.Floor(-finalPos.y / grid.CellSize.y);
+            finalSlot.x = Mathf.Floor(posAdj.x / grid.CellSize.x);
+            finalSlot.y = Mathf.Floor(-posAdj.y / grid.CellSize.y);
 
-            if (((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y && ((int)(finalSlot.x)) >= 0 && (int)finalSlot.y >= 0) // test if item is inside slot area
+            Debug.Log($"{((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x} {((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y} {(int)(finalSlot.x) >= 0} {(int)finalSlot.y >= 0}");
+
+            if (((int)(finalSlot.x) + (int)(item.size.x) - 1) < grid.gridSize.x 
+                && ((int)(finalSlot.y) + (int)(item.size.y) - 1) < grid.gridSize.y 
+                && ((int)(finalSlot.x)) >= 0 
+                && (int)finalSlot.y >= 0)
             {
                 List<Vector2> newPosItem = new List<Vector2>();
                 bool fit = false;
@@ -94,72 +98,23 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 }
                 if (fit)
                 {
-                    for (int i = 0; i < item.size.y; i++)
-                    {
-                        for (int j = 0; j < item.size.x; j++)
-                        {
-                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
-
-                        }
-                    }
-
-                    for (int i = 0; i < newPosItem.Count; i++)
-                    {
-                        grid.grid[(int)newPosItem[i].x, (int)newPosItem[i].y] = 1;
-                    }
-
-                    this.startPosition = newPosItem[0];
-                    transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(newPosItem[0].x * grid.CellSize.x, -newPosItem[0].y * grid.CellSize.y);
+                    Inventory.instance.AddItem(item, newPosItem);
                 }
                 else
                 {
-                    for (int i = 0; i < item.size.y; i++)
-                    {
-                        for (int j = 0; j < item.size.x; j++)
-                        {
-                            grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 1;
-                        }
-                    }
+                    Inventory.instance.AddItem(item);
                 }
             }
-            else
-            {
-                Inventory.instance.AddItem(item);
-                //for (int i = 0; i < item.size.y; i++)
-                //{
-                //    for (int j = 0; j < item.size.x; j++)
-                //    {
-                //        grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
-                //    }
-                //}
-                //Destroy(gameObject);
-            }
         }
-        else
-        {
-
-            //PlayerController player;
-            //player = FindObjectOfType<PlayerController>();
-
-            //TetrisListItens itenInGame; // list of items prefab to could be instantiated when dropping item.
-            //itenInGame = FindObjectOfType<TetrisListItens>();
-
-            //for (int t = 0; t < itenInGame.prefabs.Length; t++)
-            //{
-            //    if (itenInGame.itens[t].itemName == item.itemName)
-            //    {
-            //        Instantiate(itenInGame.prefabs[t].gameObject, new Vector2(player.transform.position.x + Random.Range(-1.5f, 1.5f), player.transform.position.y + Random.Range(-1.5f, 1.5f)), Quaternion.identity); //dropa o item
-
-            //        Destroy(this.gameObject);
-            //        break;
-            //    }
-
-            //}
-
-        }
-        this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
+        ReturnToSlot();
 
         group.blocksRaycasts = true;
+    }
+
+    public void ReturnToSlot()
+    {
+        capacity.transform.SetParent(transform);
+        capacity.GetComponent<RectTransform>().anchoredPosition = oldPosition;
     }
 
     public void OnPointerExit(PointerEventData eventData)

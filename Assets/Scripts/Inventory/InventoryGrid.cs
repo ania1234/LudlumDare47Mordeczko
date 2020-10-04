@@ -36,6 +36,36 @@ public class InventoryGrid : MonoBehaviour
         }
     }
 
+    internal bool AddItem(ItemInfo item, List<Vector2> newPosItem)
+    {
+        for (int i = 0; i < newPosItem.Count; i++)
+        {
+            grid[(int)newPosItem[i].x, (int)newPosItem[i].y] = 1;
+        }
+
+        ItemSlot newSlot = Instantiate(prefabSlot, itemPlace);
+        newSlot.startPosition = newPosItem[0];
+        newSlot.item = item;
+        newSlot.icon.sprite = item.icon;
+        newSlot.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        newSlot.GetComponent<RectTransform>().anchorMax = new Vector2(0f, 1f);
+        newSlot.GetComponent<RectTransform>().anchorMin = new Vector2(0f, 1f);
+        newSlot.transform.SetParent(itemPlace, false);
+        newSlot.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        newSlot.size = cellSize;
+        newSlot.GetComponent<RectTransform>().anchoredPosition = new Vector2(newSlot.startPosition.x * cellSize.x, -newSlot.startPosition.y * cellSize.y);
+        itemsInBag.Add(newSlot);
+
+        for (int k = 0; k < posItemInBag.Count; k++) //upgrade matrix
+        {
+            int posToAddX = (int)posItemInBag[k].x;
+            int posToAddY = (int)posItemInBag[k].y;
+            grid[posToAddX, posToAddY] = 1;
+        }
+        posItemInBag.Clear();
+        return true;
+    }
+
     public bool AddItem(ItemInfo item)
     {
         int contX = (int)item.size.x;
