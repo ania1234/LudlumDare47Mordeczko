@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Vector2 startPosition;
     public ItemInfo item;
@@ -60,18 +60,40 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
-        //TODO: NO!
+        var pattern = item.GetPattern();
+
         for (int i = 0; i < item.GetYSize(); i++)
         {
             for (int j = 0; j < item.GetXSize(); j++)
             {
-                grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                if (pattern[i][j] == 1)
+                {
+                    grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                }
             }
+        }
+
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+        {
+            icon.color = Color.white;
+        }
+        else
+        {
+            icon.color = Color.gray;
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Obrot!");
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        icon.color = Color.white;
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = Input.mousePosition;
@@ -109,15 +131,28 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void Clicked()
     {
-        //if (item.usable)
-        //{
-        //    item.Use();
+        Player.instance.EquipItem(item);
 
+        var pattern = item.GetPattern();
 
-        //    Destroy(this.gameObject); //item drop
-        //    Functionalities descript = FindObjectOfType<Functionalities>();
+        for (int i = 0; i < item.GetYSize(); i++)
+        {
+            for (int j = 0; j < item.GetXSize(); j++)
+            {
+                if (pattern[i][j] == 1)
+                {
+                    grid.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                }
+            }
+        }
+        Destroy(gameObject);
+    }
 
-        //    descript.changeDescription("", "", 0, "");//clean description
-        //}
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount == 2)
+        {
+            Clicked();
+        }
     }
 }

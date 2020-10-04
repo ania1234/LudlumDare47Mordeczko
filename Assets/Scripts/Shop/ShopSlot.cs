@@ -42,11 +42,23 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         capacity.transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
         //Debug.Log(Input.mousePosition);
 
-        //Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(item, (int)gridPosition.x, (int)gridPosition.y))
+        {
+            icon.color = Color.white;
+            capacity.color = Color.white;
+        }
+        else
+        {
+            icon.color = Color.gray;
+            capacity.color = Color.red;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        icon.color = Color.white;
+        capacity.color = Color.white;
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = Input.mousePosition;

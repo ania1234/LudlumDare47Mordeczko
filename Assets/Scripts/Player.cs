@@ -38,9 +38,9 @@ public class Player : MonoBehaviour
         return currentItemName == itemName;
     }
 
-    public void EquipItem(Item item)
+    public void EquipItem(ItemInfo item)
     {
-        currentItemName = item.info.name;
+        currentItemName = item.name;
     }
 
     public void TakeBeatingFrom(Enemy enemy)

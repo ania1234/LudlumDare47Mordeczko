@@ -113,12 +113,23 @@ public class InventoryGrid : MonoBehaviour
         var gridPositionX = slotPrefabIndex % (int)gridSize.x;
         var gridPositionY = Math.Floor( (float)slotPrefabIndex / gridSize.x);
         var result = new Vector2(gridPositionX, (int)gridPositionY);
-        Debug.Log($"Slot prefab: {slotPrefabIndex} Distance: {minDistance} Result: {result}");
+        //Debug.Log($"Slot prefab: {slotPrefabIndex} Distance: {minDistance} Result: {result}");
+
+        if (minDistance > 50)
+        {
+            return new Vector2(-1, -1);
+        }
+
         return result;
     }
 
     public bool CanItemBePlacedAtPosition(ItemInfo item, int x, int y)
     {
+        if(x<0 || y < 0)
+        {
+            return false;
+        }
+
         var itemPattern = item.GetPattern();
 
 
@@ -144,7 +155,7 @@ public class InventoryGrid : MonoBehaviour
 
         if(
             itemMinXPositionInInventory<0 || itemMinYPositionInInventory<0 ||
-            itemMaxXpositionInInventory>=gridSize.x || itemMaxYPositionInInventory>=gridSize.y
+            itemMaxXpositionInInventory>gridSize.x || itemMaxYPositionInInventory>gridSize.y
             )
         {
             return false;
