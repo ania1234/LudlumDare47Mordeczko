@@ -15,25 +15,9 @@ public class Inventory : MonoBehaviour
         instance = this;
     }
 
-    public void AddItem(ItemInfo item)
+    internal void AddItem(ItemInfo item, int x, int y)
     {
-        if (grid.AddItem(item))
-        {
-            items.Add(item);
-        }
-    }
-
-    public void RemoveItem(ItemInfo item)
-    {
-        if (items.Contains(item))
-        {
-            items.Remove(item);
-        }
-    }
-
-    internal void AddItem(ItemInfo item, List<Vector2> newPosItem)
-    {
-        if (grid.AddItem(item, newPosItem))
+        if (grid.AddItem(item, x, y))
         {
             items.Add(item);
         }

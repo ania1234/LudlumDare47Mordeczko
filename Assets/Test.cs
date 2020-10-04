@@ -9,9 +9,9 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Inventory.instance.AddItem(info[Random.Range(0, info.Count)]);
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    Inventory.instance.AddItem(info[Random.Range(0, info.Count)]);
+        //}
     }
 }
