@@ -66,6 +66,10 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         items = i;
 
         group.blocksRaycasts = true;
+
+        capacity.GetComponent<RectTransform>().sizeDelta = new Vector2(180, 128);
+        icon.GetComponent<RectTransform>().sizeDelta = new Vector2(190, 128);
+
         ReturnToSlot();
     }
 
