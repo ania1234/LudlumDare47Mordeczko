@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealthNumberTracker : MonoBehaviour
 {
     public List<GameObject> hearts;
+    public AudioSource ugh;
 
     private IEnumerator Start()
     {
@@ -20,6 +21,11 @@ public class HealthNumberTracker : MonoBehaviour
     {
         for(int i =0; i<hearts.Count; i++)
         {
+            if(hearts[i].activeSelf && i >= health)
+            {
+                ugh.Play();
+            }
+
             hearts[i].SetActive(i < health);
         }
     }
