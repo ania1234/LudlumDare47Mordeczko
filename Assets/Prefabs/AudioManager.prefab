@@ -145,4 +145,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d9b39ae93fc60894ebebee9a7e506e3d, type: 3}
   - {fileID: 8300000, guid: 917ab4802dfdc3f459a9bd58877cff1c, type: 3}
   - {fileID: 8300000, guid: c3205948c6626e4478896643ae37a99a, type: 3}
-  minVolume: 0.01
+  minVolume: 0.1
