@@ -47,12 +47,15 @@ public class GameManager : MonoBehaviour
         }
     }
     public float timeLeft;
-    private void Start()
+    private IEnumerator Start()
     {
         if (levelEnd == null)
         {
             levelEnd = GameObject.FindObjectOfType<LevelEnd>();
         }
+
+        yield return null;
+        yield return null;
 
         levelNumber = -1;
         ProgressLevel(levelEnd.teleportPoint);
