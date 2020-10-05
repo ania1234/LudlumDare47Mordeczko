@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Money 2
   m_EditorClassIdentifier: 
   name: Money
-  icon: {fileID: 21300000, guid: 7a217db267f91274aa84bf1d02b614ea, type: 3}
-  capacityIcon: {fileID: 21300000, guid: a8ec116406866db46979fb612e105b0a, type: 3}
-  pattern: '01
+  icon: {fileID: 21300000, guid: cb919055d3bc21343b67a4eb15fc5016, type: 3}
+  capacityIcon: {fileID: 21300000, guid: 4ff1a877b15383842a3c7915dda21970, type: 3}
+  pattern: '11
 
     11
 
-    11'
+    10'

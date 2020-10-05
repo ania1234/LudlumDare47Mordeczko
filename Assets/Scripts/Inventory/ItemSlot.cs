@@ -50,6 +50,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].GetYSize() * size.y);
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].GetXSize() * size.x);
         icon.sprite = items[turnPhase].icon;
+
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
+        {
+
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

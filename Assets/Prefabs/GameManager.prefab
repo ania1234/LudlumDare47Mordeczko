@@ -43,4 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6af7f5222bca8498dd3739ba95a172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 5
+  dayDuration: 10
+  maxLevelNumber: 5
+  camera1: {fileID: 0}
+  camera2: {fileID: 0}
+  camera3: {fileID: 0}
+  heroAnimator: {fileID: 0}
+  allanimator: {fileID: 0}
+  menuSceneName: Menu
+  winSceneName: WinScene
+  isdead: 0
+  timeLeft: 0
+  firsttime: 1

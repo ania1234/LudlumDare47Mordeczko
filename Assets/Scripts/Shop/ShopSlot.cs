@@ -50,6 +50,12 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         var rect2 = icon.GetComponent<RectTransform>();
         rect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].icon.texture.height);
         rect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].icon.texture.width);
+
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
+        {
+
+        }
     }
 
     public void Init(ItemInfo[] i)

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Necklace 3
   m_EditorClassIdentifier: 
   name: Necklace
-  icon: {fileID: 21300000, guid: 421d354ebdb397f4286b065bfc3a7de1, type: 3}
-  capacityIcon: {fileID: 21300000, guid: 5c6d24547764a5e46b3e52d9a58b2b83, type: 3}
-  pattern: '001
+  icon: {fileID: 21300000, guid: f3c2e6be146a72844a7bbd3893fd8a0f, type: 3}
+  capacityIcon: {fileID: 21300000, guid: 21405ce81cda59c46916dd90b36320b2, type: 3}
+  pattern: '100
 
     010
 
-    100'
+    001'

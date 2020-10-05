@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Camera camera1;
     public Camera camera2;
+    public Camera camera3;
 
     public Animator heroAnimator;
     public Animator allanimator;
     public string menuSceneName = "Menu";
     public string winSceneName = "WinScene";
-
+    public bool isdead = false;
     public int levelNumber { get; private set; }
 
     //może nie chcemy progressowaćdo nastepnego levelu jesli nie rozwalilismy wszystkich zagadek,
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         }
     }
-
+    public float timeLeft;
     private void Start()
     {
         if (levelEnd == null)
@@ -59,7 +60,10 @@ public class GameManager : MonoBehaviour
 
     public void ProgressLevel(Transform teleportPoint)
     {
-        StartCoroutine(ProgressLevelCoroutine(teleportPoint));
+        if (!isdead)
+        {
+            StartCoroutine(ProgressLevelCoroutine(teleportPoint));
+        }
     }
 
     /// <summary>
@@ -72,7 +76,7 @@ public class GameManager : MonoBehaviour
     {
         canProgressLevel = false;
         Player.instance.state.canMove = false;
-        Player.instance.SetHealth( Player.instance.maxHealth);
+        Player.instance.SetHealth( Player.instance.health+1);
         if (!firsttime)
         {
             CameraManager.instance.RequestCameraFade(0.4f, true);
@@ -100,7 +104,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         var waitEOF = new WaitForEndOfFrame();
-        var timeLeft = dayDuration;
+        timeLeft = dayDuration;
         while (timeLeft > 0)
         {
             onDayTimeLeftChanged(timeLeft);
@@ -112,8 +116,7 @@ public class GameManager : MonoBehaviour
         {
             currentDayTime = DayTimeEnum.night;
             onDayTimeChanged(currentDayTime);
-            Player.instance.state.canMove = true;
-            canProgressLevel = true;
+            yield return new WaitForSeconds(0.5f);
             for (int i = 0; i < Inventory.instance.grid.gridSize.y; i++)
             {
                 for (int ii = 0; ii < Inventory.instance.grid.gridSize.x; ii++)
@@ -121,18 +124,35 @@ public class GameManager : MonoBehaviour
                     Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.white;
                 }
             }
+            Player.instance.state.canMove = true;
+            canProgressLevel = true;
+
         }
         else
         {
             GameWin();
         }
     }
-
+    public void EndTimer()
+    {
+        timeLeft = 0;
+    }
     public void GameOver()
     {
-        SceneManager.LoadScene(menuSceneName);
+        isdead = true;
+        StartCoroutine(GameOverCorutine());
 
+
+    }
+
+    private IEnumerator GameOverCorutine()
+    {
         CameraManager.instance.RequestCameraFade(0.4f, true);
+        yield return new WaitForSeconds(0.4f);
+        camera1.gameObject.SetActive(false);
+        camera3.gameObject.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(menuSceneName);
     }
 
     public void GameWin()

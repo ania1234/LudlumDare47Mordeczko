@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Mushroom 2
   m_EditorClassIdentifier: 
   name: Mushroom
-  icon: {fileID: 21300000, guid: 5e1354b3e39cd2e4b9a64db042c9fb0f, type: 3}
-  capacityIcon: {fileID: 21300000, guid: afcaafa316c4e1a479f479eeb29bb7af, type: 3}
-  pattern: '111
+  icon: {fileID: 21300000, guid: 05c06a2f09822ad4d9526473287eaa29, type: 3}
+  capacityIcon: {fileID: 21300000, guid: 6331741554183974894ee5f886013989, type: 3}
+  pattern: '010
 
     111
 
-    010'
+    111'

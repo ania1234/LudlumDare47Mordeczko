@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Ring 3
   m_EditorClassIdentifier: 
   name: Ring
-  icon: {fileID: 21300000, guid: f033dacfaf7dff848ae6af34e9366f3f, type: 3}
-  capacityIcon: {fileID: 21300000, guid: d4dd00d6d4ae34247a36993d0b9beb63, type: 3}
-  pattern: '0110
+  icon: {fileID: 21300000, guid: c06400e7187edaa4583e13fc0cee51e0, type: 3}
+  capacityIcon: {fileID: 21300000, guid: 5b821bc97ea950d4996163603032bc03, type: 3}
+  pattern: '010
 
-    1111
+    111
 
-    0110'
+    111
+
+    010'

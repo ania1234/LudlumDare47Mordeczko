@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d824b34913f74434d8924b036e4baefa, type: 3}
   m_Name: RingList
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 11400000, guid: 5896bd1c10e452c40a5ad250b81aef8c, type: 2}
+  - {fileID: 11400000, guid: 873fe6fe83b689341aac56b2010dd6d8, type: 2}
+  - {fileID: 11400000, guid: 5bdfd20bd3b38ba4bbd5941e002caf3f, type: 2}
+  - {fileID: 11400000, guid: b520281eeaa5add4fb7453c47b9bcd5a, type: 2}

@@ -117,7 +117,7 @@ MonoBehaviour:
   - {x: -4, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
-  timeForThisWave: 10
+  timeForThisWave: 20
 --- !u!1 &5342765044476385091
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
-  timeForThisWave: 10
+  timeForThisWave: 15
 --- !u!1 &5342765045078495661
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   - {x: 3.5, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
-  timeForThisWave: 10
+  timeForThisWave: 20
 --- !u!1 &5342765045121742782
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   - {x: 3, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
-  timeForThisWave: 10
+  timeForThisWave: 15
 --- !u!1 &5342765045325312365
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   - {x: 3.5, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
-  timeForThisWave: 10
+  timeForThisWave: 20
 --- !u!1 &5342765045526162167
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,4 +386,4 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
   manager: {fileID: 5342765043646643601}
-  timeForThisWave: 10
+  timeForThisWave: 15
