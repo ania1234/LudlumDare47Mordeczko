@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class DimScript : MonoBehaviour
 {
-    public Material dimMaterial;
+    private Material dimMaterial;
     [Range(0, 1)]
     public float dimValue = 1;
+
+    private void Awake()
+    {
+        dimMaterial = new Material(Shader.Find("Custom/DimShader"));
+    }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
