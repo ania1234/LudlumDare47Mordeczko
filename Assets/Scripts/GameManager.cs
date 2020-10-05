@@ -147,9 +147,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameOverCorutine()
     {
-        CameraManager.instance.RequestCameraFade(0.4f, true);
+        Player.instance.state.canMove = false;
+        CameraManager.instance.RequestCameraFade(0.3f, true);
         yield return new WaitForSeconds(0.4f);
         camera1.gameObject.SetActive(false);
+        CameraManager.instance.RequestCameraFade(0.1f, false);
         camera3.gameObject.SetActive(true);
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(menuSceneName);

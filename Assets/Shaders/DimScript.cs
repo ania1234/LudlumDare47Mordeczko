@@ -5,14 +5,6 @@ using UnityEngine.UI;
 
 public class DimScript : MonoBehaviour
 {
-    [Range(0, 1)]
-    public float dimValue = 1;
-
-    public void MoveDimValue(float startValue, float targetValue, float time)
-    {
-        StartCoroutine(MoveDimValueCoroutine(startValue, targetValue, time));
-    }
-
     // Canvas Version
     public RawImage dimCanvas;
 
@@ -24,21 +16,14 @@ public class DimScript : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveDimValueCoroutine(float startValue, float targetValue, float time)
+    public void SetDimValue(float dimValue)
     {
-        float timeElapsed = 0;
-        while (timeElapsed < time)
+        if (dimCanvas != null)
         {
-            dimValue = Mathf.Lerp(startValue, targetValue, timeElapsed / time);
-            if (dimCanvas != null)
-            {
-                dimCanvas.color = Color.Lerp(Color.black, Color.clear, dimValue);
-            }
-            yield return null;
-            timeElapsed += Time.deltaTime;
+            dimCanvas.color = Color.Lerp(Color.black, Color.clear, dimValue);
         }
-        yield return null;
     }
+
 
     // Shader version
     /*

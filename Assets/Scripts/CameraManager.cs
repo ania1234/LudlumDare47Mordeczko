@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour
     public Color nightBackgroundColor;
 
     public Camera mainCamera { get; private set; }
+    private DimScript dimCam;
 
     // Start is called before the first frame update
     void Awake()
@@ -44,15 +45,33 @@ public class CameraManager : MonoBehaviour
 
     public void RequestCameraFade(float fadeTime, bool fadeIn)
     {
-        var dimCam = mainCamera.GetComponent<DimScript>();
-        dimCam.StopAllCoroutines();
+        if (dimCam == null)
+        {
+            dimCam = mainCamera.GetComponent<DimScript>();
+        }
+
+        StopAllCoroutines();
+
         if (fadeIn)
         {
-            dimCam.MoveDimValue(1, 0, fadeTime);
+            StartCoroutine(MoveDimValueCoroutine(1, 0, fadeTime));
         }
         else
         {
-            dimCam.MoveDimValue(0, 1, fadeTime);
+            StartCoroutine(MoveDimValueCoroutine(0, 1, fadeTime));
         }
+    }
+
+    private IEnumerator MoveDimValueCoroutine(float startValue, float targetValue, float time)
+    {
+        float timeElapsed = 0;
+        while (timeElapsed < time)
+        {
+            var dimValue = Mathf.Lerp(startValue, targetValue, timeElapsed / time);
+            dimCam.SetDimValue(dimValue);
+            yield return null;
+            timeElapsed += Time.deltaTime;
+        }
+        yield return null;
     }
 }

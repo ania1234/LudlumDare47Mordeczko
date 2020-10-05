@@ -24,9 +24,5 @@ public class MenuPlay : MonoBehaviour
     private void Clicked()
     {
         SceneManager.LoadScene(sceneName);
-
-        var dimCam = mainCamera.GetComponent<DimScript>();
-        dimCam.StopAllCoroutines();
-        dimCam.MoveDimValue(0, 1, 0.4f);
     }
 }

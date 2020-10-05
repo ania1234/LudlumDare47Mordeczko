@@ -1521,7 +1521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da29a937f7e433841b7e1ae68382a6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimValue: 1
   dimCanvas: {fileID: 2019753396}
 --- !u!1 &1928900173
 GameObject:
@@ -1852,6 +1851,11 @@ PrefabInstance:
     - target: {fileID: 7495315766722353252, guid: d9155e411fb567e4d8b780e1583c1719,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495315766754926567, guid: d9155e411fb567e4d8b780e1583c1719,
+        type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
