@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public bool isDormant;
     public string itemRequiredToKill;
-
+    public GameObject bubble;
+    public SpriteRenderer itemSprite;
     private IEnumerator Start()
     {
         while (GameManager.instance == null)
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
+        itemSprite.sprite = Shop.instance.items.Find(o => o.items[0].name == itemRequiredToKill).items[0].icon;
         GameManager.instance.onDayTimeChanged += Instance_onDayTimeChanged;
     }
 
@@ -21,6 +23,11 @@ public class Enemy : MonoBehaviour
     private void Instance_onDayTimeChanged(DayTimeEnum obj)
     {
         isDormant = obj == DayTimeEnum.day;
+        if(obj == DayTimeEnum.night)
+        {
+            bubble.gameObject.SetActive(false);
+        
+       }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
