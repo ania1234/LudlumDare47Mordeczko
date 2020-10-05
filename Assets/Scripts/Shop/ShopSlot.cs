@@ -46,6 +46,10 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         var rect = capacity.GetComponent<RectTransform>();
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].capacityIcon.texture.height);
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].capacityIcon.texture.width);
+
+        var rect2 = icon.GetComponent<RectTransform>();
+        rect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].icon.texture.height);
+        rect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].icon.texture.width);
     }
 
     public void Init(ItemInfo[] i)
