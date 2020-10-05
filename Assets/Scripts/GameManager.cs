@@ -93,12 +93,19 @@ public class GameManager : MonoBehaviour
             camera2.gameObject.SetActive(false);
         }
 
+        levelNumber++;
+        onPassChanged(levelNumber);
+
+        if (levelNumber == maxLevelNumber)
+        {
+            GameWin();
+            yield break;
+        }
+
         yield return new WaitForSeconds(0.6f);
         CameraManager.instance.RequestCameraFade(0.4f, false);
         Player.instance.gameObject.transform.position = teleportPoint.position;
         firsttime = false;
-        levelNumber++;
-        onPassChanged(levelNumber);
 
         currentDayTime = DayTimeEnum.day;
         onDayTimeChanged(currentDayTime);
@@ -113,26 +120,18 @@ public class GameManager : MonoBehaviour
             timeLeft -= Time.deltaTime;
         }
 
-        if (levelNumber < maxLevelNumber)
+        currentDayTime = DayTimeEnum.night;
+        onDayTimeChanged(currentDayTime);
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < Inventory.instance.grid.gridSize.y; i++)
         {
-            currentDayTime = DayTimeEnum.night;
-            onDayTimeChanged(currentDayTime);
-            yield return new WaitForSeconds(0.5f);
-            for (int i = 0; i < Inventory.instance.grid.gridSize.y; i++)
+            for (int ii = 0; ii < Inventory.instance.grid.gridSize.x; ii++)
             {
-                for (int ii = 0; ii < Inventory.instance.grid.gridSize.x; ii++)
-                {
-                    Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.white;
-                }
+                Inventory.instance.grid.slotPrefabs[ii + i * 9].GetComponent<Image>().color = Color.white;
             }
-            Player.instance.state.canMove = true;
-            canProgressLevel = true;
-
         }
-        else
-        {
-            GameWin();
-        }
+        Player.instance.state.canMove = true;
+        canProgressLevel = true;
     }
 
     public void EndTimer()
@@ -162,6 +161,6 @@ public class GameManager : MonoBehaviour
     public void GameWin()
     {
         SceneManager.LoadScene(winSceneName);
-        CameraManager.instance.RequestCameraFade(0.4f, true);
+        //CameraManager.instance.RequestCameraFade(0.4f, true);
     }
 }
