@@ -30,7 +30,10 @@ public class DimScript : MonoBehaviour
         while (timeElapsed < time)
         {
             dimValue = Mathf.Lerp(startValue, targetValue, timeElapsed / time);
-            dimCanvas.color = Color.Lerp( Color.black, Color.clear, dimValue);
+            if (dimCanvas != null)
+            {
+                dimCanvas.color = Color.Lerp(Color.black, Color.clear, dimValue);
+            }
             yield return null;
             timeElapsed += Time.deltaTime;
         }
