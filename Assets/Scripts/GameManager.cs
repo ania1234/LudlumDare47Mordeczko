@@ -79,19 +79,20 @@ public class GameManager : MonoBehaviour
         Player.instance.SetHealth( Player.instance.health+1);
         if (!firsttime)
         {
-            CameraManager.instance.RequestCameraFade(0.4f, true);
+            CameraManager.instance.RequestCameraFade(0.2f, true);
             yield return new WaitForSeconds(0.4f);
+            CameraManager.instance.RequestCameraFade(0.2f, false);
             camera1.gameObject.SetActive(false);
             camera2.gameObject.SetActive(true);
             allanimator.Play(0);
             heroAnimator.SetBool("IsWalking", true);
             yield return new WaitForSeconds(4f);
-            //CameraManager.instance.RequestCameraFade(0.4f, true);
+            CameraManager.instance.RequestCameraFade(0.4f, true);
             yield return new WaitForSeconds(1.5f);
             camera1.gameObject.SetActive(true);
             camera2.gameObject.SetActive(false);
-
         }
+
         yield return new WaitForSeconds(0.6f);
         CameraManager.instance.RequestCameraFade(0.4f, false);
         Player.instance.gameObject.transform.position = teleportPoint.position;
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
             GameWin();
         }
     }
+
     public void EndTimer()
     {
         timeLeft = 0;
