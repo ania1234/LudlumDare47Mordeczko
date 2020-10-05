@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1868080609992900044}
   - component: {fileID: 6037517212408195693}
   - component: {fileID: 1807891877619485519}
+  - component: {fileID: 8151873219734261557}
   m_Layer: 0
   m_Name: Student
   m_TagString: Untagged
@@ -208,6 +209,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9050927, y: 2.79}
   m_EdgeRadius: 0
+--- !u!95 &8151873219734261557
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868080609992900046}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8b9874d2a71dee4d98ce981a1ad1620, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3699939464052199036
 GameObject:
   m_ObjectHideFlags: 0
