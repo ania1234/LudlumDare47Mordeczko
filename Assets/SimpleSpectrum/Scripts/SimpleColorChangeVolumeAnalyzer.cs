@@ -9,8 +9,6 @@ using UnityEngine.UI;
 /// </summary>
 public class SimpleColorChangeVolumeAnalyzer : MonoBehaviour, ICustomVolumeAnalyzer
 {
-    private float oldVal = 0;
-    private float oldColorVal = 0;
     private OutputVolume ov;
     private SpriteRenderer sprite;
     private Image image;

@@ -29,9 +29,10 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (isDragging )
         {
-            if (Input.GetMouseButtonDown(1))
+            if (InputManager.instance.ShouldRotate)
             {
                 Turn();
+                InputManager.instance.ConsumeShouldRotate();
             }
         }
     }
@@ -51,7 +52,7 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, items[turnPhase].icon.texture.height);
         rect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].icon.texture.width);
 
-        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(capacity.transform.position);
         if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
 
@@ -81,11 +82,10 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        capacity.transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
-        //Debug.Log(Input.mousePosition);
+        var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
+        capacity.transform.position = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset; 
 
-        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(capacity.transform.position);
         if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
             icon.color = Color.white;
@@ -105,15 +105,15 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         isDragging = false;
         icon.color = Color.white;
         capacity.color = Color.white;
-        if (EventSystem.current.IsPointerOverGameObject())
+
+        var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
+        var finalPos = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset;
+        Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(finalPos);
+        if(Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
-            Vector2 finalPos = Input.mousePosition;
-            Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(finalPos);
-            if(Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
-            {
-                Inventory.instance.grid.AddItem(items, turnPhase, (int)gridPosition.x, (int)gridPosition.y);
-            }
+            Inventory.instance.grid.AddItem(items, turnPhase, (int)gridPosition.x, (int)gridPosition.y);
         }
+
         ReturnToSlot();
 
         group.blocksRaycasts = true;

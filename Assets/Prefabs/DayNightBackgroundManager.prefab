@@ -43,17 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1c47d084a50e742b62b7a34ac4cd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spritesToDim:
+  spritesToDim: []
+  spritesToFlip: []
+  dayOnlyGameObjects:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spritesToFlip:
-  - {fileID: 0}
-  dayOnlyGameObjects: []
   nightOnlyGameObjects:
-  - {fileID: 0}
   - {fileID: 0}

@@ -97,11 +97,15 @@ public class InventoryGrid : MonoBehaviour
         return true;
     }
 
-    internal Vector2 GetGridPositionFromMousePosition(Vector2 mousePosition)
+    /// <summary>
+    /// Returns -1, -1 if we are too far away from the grid
+    /// </summary>
+    internal Vector2 GetGridPositionFromWorldPosition(Vector3 worldPosition)
     {
         int slotPrefabIndex = -1;
         float minDistance = float.MaxValue;
-        for(int i =0; i<slotPrefabs.Count; i++)
+        var mousePosition = CameraManager.instance.mainCamera.WorldToScreenPoint(worldPosition);
+        for (int i =0; i<slotPrefabs.Count; i++)
         {
             var slotPrefabScreenPosition = CameraManager.instance.mainCamera.WorldToScreenPoint(slotPrefabs[i].transform.position);
             var distance = Vector2.Distance(mousePosition, slotPrefabScreenPosition);

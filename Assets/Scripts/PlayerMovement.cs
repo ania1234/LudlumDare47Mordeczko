@@ -12,10 +12,11 @@ public class PlayerMovement : MonoBehaviour
     private bool shouldJump;
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (InputManager.instance.ShouldJump)
         {
             shouldJump = true;
         }
+        InputManager.instance.ConsumeShouldJump();
     }
 
 

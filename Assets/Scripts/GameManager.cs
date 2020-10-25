@@ -75,6 +75,13 @@ public class GameManager : MonoBehaviour
     /// <param name="teleportPoint">damn</param>
     /// 
     public bool firsttime = true;
+
+    /// <summary>
+    /// How long can you wait for your click to still count as double click
+    /// </summary>
+    public float doubleClickDuration = 0.25f;
+    public Vector3 draggableItemOffset = new Vector3 (1, 1, 0);
+
     private IEnumerator ProgressLevelCoroutine(Transform teleportPoint)
     {
         canProgressLevel = false;

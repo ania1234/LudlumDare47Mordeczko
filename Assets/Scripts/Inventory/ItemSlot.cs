@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Vector2 startPosition;
     public ItemInfo[] items;
@@ -18,6 +18,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public int turnPhase = 0;
 
     private bool isDragging;
+    private float _lastTimeClicked = 0;
+    
 
     void Start()
     {
@@ -35,9 +37,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (isDragging)
         {
             Debug.Log("Dragging");
-            if (Input.GetMouseButtonDown(1))
+            if (InputManager.instance.ShouldRotate)
             {
                 Turn();
+                InputManager.instance.ConsumeShouldRotate();
             }
         }
     }
@@ -51,33 +54,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, items[turnPhase].GetXSize() * size.x);
         icon.sprite = items[turnPhase].icon;
 
-        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(this.transform.position);
         if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
 
         }
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //Debug.Log(eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.itemName);
-        //string title = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.itemName;
-        //string body = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.itemDescription;
-        //int attributte1 = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.getAtt1();
-        //Sprite icon_attribute = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.getAtt1Icon();
-        //string rarity = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<TetrisItemSlot>().item.rarity;
-        //Functionalities descript = FindObjectOfType<Functionalities>();
-
-        //descript.changeDescription(title, body, attributte1, rarity, icon_attribute);
-
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //Functionalities descript = FindObjectOfType<Functionalities>();
-
-        //descript.changeDescription("", "", 0, "");
-
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -87,12 +68,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         group.blocksRaycasts = false;
     }
 
-
-
     public void OnDrag(PointerEventData eventData)
     {
-        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(pos.x, pos.y, 0); //eventData.position;
+        var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
+        transform.position = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset; //eventData.position;
         var pattern = items[turnPhase].GetPattern();
 
         for (int i = 0; i < items[turnPhase].GetYSize(); i++)
@@ -106,7 +85,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             }
         }
 
-        var gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(Input.mousePosition);
+        var gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(this.transform.position);
 
         if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
@@ -125,38 +104,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         isDragging = false;
         icon.color = Color.white;
 
-        if (EventSystem.current.IsPointerOverGameObject())
+        var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
+        var finalPos = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset;
+        Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(finalPos);
+        if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
-            Vector2 finalPos = Input.mousePosition;
-            Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromMousePosition(finalPos);
-            if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
-            {
-                Inventory.instance.grid.AddItem(items, turnPhase, (int)gridPosition.x, (int)gridPosition.y);
-            }
-            Destroy(gameObject);
+            Inventory.instance.grid.AddItem(items, turnPhase, (int)gridPosition.x, (int)gridPosition.y);
         }
-        else
-        {
+        Destroy(gameObject);
 
-            //PlayerController player;
-            //player = FindObjectOfType<PlayerController>();
-
-            //TetrisListItens itenInGame; // list of items prefab to could be instantiated when dropping item.
-            //itenInGame = FindObjectOfType<TetrisListItens>();
-
-            //for (int t = 0; t < itenInGame.prefabs.Length; t++)
-            //{
-            //    if (itenInGame.itens[t].itemName == item.itemName)
-            //    {
-            //        Instantiate(itenInGame.prefabs[t].gameObject, new Vector2(player.transform.position.x + Random.Range(-1.5f, 1.5f), player.transform.position.y + Random.Range(-1.5f, 1.5f)), Quaternion.identity); //dropa o item
-
-            //        Destroy(this.gameObject);
-            //        break;
-            //    }
-
-            //}
-
-        }
         group.blocksRaycasts = true;
         for (int i = 0; i < Inventory.instance.grid.gridSize.y; i++)
         {
@@ -188,9 +144,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.clickCount == 2)
-        {
+        if(Time.time - _lastTimeClicked < GameManager.instance.doubleClickDuration)
+        { 
             Clicked();
+        }
+        else
+        {
+            _lastTimeClicked = Time.time;
         }
     }
 }
