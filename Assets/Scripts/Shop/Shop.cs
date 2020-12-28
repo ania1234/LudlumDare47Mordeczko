@@ -18,13 +18,13 @@ public class Shop : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
         if (instance == null) instance = this;
-        GameManager.instance.onDayTimeChanged += OnDayTimeChanged;
-        OnDayTimeChanged(GameManager.instance.DayTime);
+        GameManager_old.instance.onDayTimeChanged += OnDayTimeChanged;
+        OnDayTimeChanged(GameManager_old.instance.DayTime);
     }
 
     private void OnDayTimeChanged(DayTimeEnum value)

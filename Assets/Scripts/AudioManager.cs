@@ -30,9 +30,9 @@ public class AudioManager : MonoBehaviour
             ChangeTrack();
         }
 
-        if (GameManager.instance != null && GameManager.instance.levelEnd != null)
+        if (GameManager_old.instance != null && GameManager_old.instance.levelEnd != null)
         {
-            float levelProgress = (Player.instance.transform.position.x - GameManager.instance.levelEnd.teleportPoint.position.x) / (GameManager.instance.levelEnd.transform.position.x - GameManager.instance.levelEnd.teleportPoint.position.x);
+            float levelProgress = (Player.instance.transform.position.x - GameManager_old.instance.levelEnd.teleportPoint.position.x) / (GameManager_old.instance.levelEnd.transform.position.x - GameManager_old.instance.levelEnd.teleportPoint.position.x);
             audioSource.volume = Mathf.Lerp(minVolume, 1, (levelProgress));
         }
     }

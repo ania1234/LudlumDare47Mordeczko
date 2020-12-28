@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager_old : MonoBehaviour
 {
     public event Action<int> onPassChanged = new Action<int>(x=>{});
     public event Action<DayTimeEnum> onDayTimeChanged = new Action<DayTimeEnum>(x => { });
@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
     public float dayDuration = 15.0f;
     public int maxLevelNumber = 7;
 
-    public static GameManager instance;
-    public Camera camera1;
-    public Camera camera2;
-    public Camera camera3;
+    public static GameManager_old instance;
+    public Camera gameplayCamera;
+    public Camera levelEndCamera;
+    public Camera gameLostCamera;
 
     public Animator heroAnimator;
     public Animator allanimator;
@@ -92,15 +92,15 @@ public class GameManager : MonoBehaviour
             CameraManager.instance.RequestCameraFade(0.2f, true);
             yield return new WaitForSeconds(0.4f);
             CameraManager.instance.RequestCameraFade(0.2f, false);
-            camera1.gameObject.SetActive(false);
-            camera2.gameObject.SetActive(true);
+            gameplayCamera.gameObject.SetActive(false);
+            levelEndCamera.gameObject.SetActive(true);
             allanimator.Play(0);
             heroAnimator.SetBool("IsWalking", true);
             yield return new WaitForSeconds(4f);
             CameraManager.instance.RequestCameraFade(0.4f, true);
             yield return new WaitForSeconds(1.5f);
-            camera1.gameObject.SetActive(true);
-            camera2.gameObject.SetActive(false);
+            gameplayCamera.gameObject.SetActive(true);
+            levelEndCamera.gameObject.SetActive(false);
         }
 
         levelNumber++;
@@ -161,9 +161,9 @@ public class GameManager : MonoBehaviour
         Player.instance.state.canMove = false;
         CameraManager.instance.RequestCameraFade(0.3f, true);
         yield return new WaitForSeconds(0.4f);
-        camera1.gameObject.SetActive(false);
+        gameplayCamera.gameObject.SetActive(false);
         CameraManager.instance.RequestCameraFade(0.1f, false);
-        camera3.gameObject.SetActive(true);
+        gameLostCamera.gameObject.SetActive(true);
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(menuSceneName);
     }

@@ -9,11 +9,11 @@ public class EnemiesManager : MonoBehaviour
     public List<Enemy> enemyPrefabs;
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
-        GameManager.instance.onPassChanged += Instance_onPassChanged;
+        GameManager_old.instance.onPassChanged += Instance_onPassChanged;
 
     }
 

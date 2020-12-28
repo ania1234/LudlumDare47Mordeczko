@@ -10,21 +10,21 @@ public class Timer : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
 
         image = GetComponent<Image>();
 
-        GameManager.instance.onDayTimeChanged += OnDayTimeChanged;
-        GameManager.instance.onDayTimeLeftChanged += OnDayTimeLeftChanged;
-        OnDayTimeChanged(GameManager.instance.DayTime);
+        GameManager_old.instance.onDayTimeChanged += OnDayTimeChanged;
+        GameManager_old.instance.onDayTimeLeftChanged += OnDayTimeLeftChanged;
+        OnDayTimeChanged(GameManager_old.instance.DayTime);
     }
 
     private void OnDayTimeLeftChanged(float value)
     {
-        image.fillAmount = Mathf.Lerp(0, 1, Mathf.InverseLerp(0, GameManager.instance.dayDuration, value));
+        image.fillAmount = Mathf.Lerp(0, 1, Mathf.InverseLerp(0, GameManager_old.instance.dayDuration, value));
     }
 
     private void OnDayTimeChanged(DayTimeEnum value)

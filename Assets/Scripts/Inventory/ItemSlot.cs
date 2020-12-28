@@ -71,7 +71,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public void OnDrag(PointerEventData eventData)
     {
         var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
-        transform.position = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset; //eventData.position;
+        transform.position = new Vector3(pos.x, pos.y, 0) + GameManager_old.instance.draggableItemOffset; //eventData.position;
         var pattern = items[turnPhase].GetPattern();
 
         for (int i = 0; i < items[turnPhase].GetYSize(); i++)
@@ -105,7 +105,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         icon.color = Color.white;
 
         var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
-        var finalPos = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset;
+        var finalPos = new Vector3(pos.x, pos.y, 0) + GameManager_old.instance.draggableItemOffset;
         Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(finalPos);
         if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {
@@ -144,7 +144,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(Time.time - _lastTimeClicked < GameManager.instance.doubleClickDuration)
+        if(Time.time - _lastTimeClicked < GameManager_old.instance.doubleClickDuration)
         { 
             Clicked();
         }

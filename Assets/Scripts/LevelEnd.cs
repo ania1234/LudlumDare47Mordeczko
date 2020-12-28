@@ -8,21 +8,21 @@ public class LevelEnd : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
 
-        GameManager.instance.levelEnd = this;
+        GameManager_old.instance.levelEnd = this;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.instance.canProgressLevel)
+        if (GameManager_old.instance.canProgressLevel)
         {
             if (collision.gameObject == Player.instance.gameObject)
             {
-                GameManager.instance.ProgressLevel(teleportPoint);
+                GameManager_old.instance.ProgressLevel(teleportPoint);
             }
         }
     }

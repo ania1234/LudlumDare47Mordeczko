@@ -83,7 +83,7 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
-        capacity.transform.position = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset; 
+        capacity.transform.position = new Vector3(pos.x, pos.y, 0) + GameManager_old.instance.draggableItemOffset; 
 
         var gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(capacity.transform.position);
         if (Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
@@ -107,7 +107,7 @@ public class ShopSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         capacity.color = Color.white;
 
         var pos = Camera.main.ScreenToWorldPoint(InputManager.instance.MousePosition);
-        var finalPos = new Vector3(pos.x, pos.y, 0) + GameManager.instance.draggableItemOffset;
+        var finalPos = new Vector3(pos.x, pos.y, 0) + GameManager_old.instance.draggableItemOffset;
         Vector2 gridPosition = Inventory.instance.grid.GetGridPositionFromWorldPosition(finalPos);
         if(Inventory.instance.grid.CanItemBePlacedAtPosition(items[turnPhase], (int)gridPosition.x, (int)gridPosition.y))
         {

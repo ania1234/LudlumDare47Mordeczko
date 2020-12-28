@@ -8,11 +8,11 @@ public class LevelNumberTracker : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
-        GameManager.instance.onPassChanged += Instance_onPassChanged;
+        GameManager_old.instance.onPassChanged += Instance_onPassChanged;
     }
 
     private void Instance_onPassChanged(int obj)

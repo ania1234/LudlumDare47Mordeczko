@@ -13,13 +13,13 @@ public class ShopNeonSetter : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
 
-        GameManager.instance.onDayTimeChanged += OnDayTimeChanged;
-        OnDayTimeChanged(GameManager.instance.DayTime);
+        GameManager_old.instance.onDayTimeChanged += OnDayTimeChanged;
+        OnDayTimeChanged(GameManager_old.instance.DayTime);
     }
 
     private void OnDayTimeChanged(DayTimeEnum value)

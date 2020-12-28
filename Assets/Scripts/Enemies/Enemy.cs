@@ -10,13 +10,13 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer itemSprite;
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
 
         itemSprite.sprite = Shop.instance.items.Find(o => o.items[0].name == itemRequiredToKill).items[0].icon;
-        GameManager.instance.onDayTimeChanged += Instance_onDayTimeChanged;
+        GameManager_old.instance.onDayTimeChanged += Instance_onDayTimeChanged;
     }
 
     //Tutaj budzi sie przeciwnik

@@ -19,22 +19,4 @@ public class JumpButton : MonoBehaviour
         }
 #endif
     }
-
-    public void ToggleOnlyRotate(bool value)
-    {
-        InputManager.instance.OnlyRotateOnButtonClick = value;
-    }
-
-    public void Rotate()
-    {
-#if UNITY_EDITOR || UNITY_STANDALONE
-        InputManager.instance.SetShouldRotate();
-#endif
-#if UNITY_IOS || UNITY_ANDROID
-        if (Input.touchCount == 2)
-        {
-            InputManager.instance.SetShouldRotate();
-        }
-#endif
-    }
 }

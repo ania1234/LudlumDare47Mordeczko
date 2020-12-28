@@ -1107,7 +1107,7 @@ GameObject:
   - component: {fileID: 466601430}
   - component: {fileID: 466601429}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: LevelEndCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3846,7 +3846,7 @@ GameObject:
   - component: {fileID: 1126057563}
   - component: {fileID: 1126057562}
   m_Layer: 0
-  m_Name: clubAssets
+  m_Name: LevelEndClubAssets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4318,7 +4318,7 @@ GameObject:
   - component: {fileID: 1215277232}
   - component: {fileID: 1215277233}
   m_Layer: 0
-  m_Name: Main Camera (2)
+  m_Name: GameLostCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5491,7 +5491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1643107935}
   m_Layer: 0
-  m_Name: clubAssets (1)
+  m_Name: GameLostClubAssets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8341,17 +8341,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7224582403084585988, guid: ed5b367e932379843bb010591a353001,
         type: 3}
-      propertyPath: camera1
+      propertyPath: gameplayCamera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 7224582403084585988, guid: ed5b367e932379843bb010591a353001,
         type: 3}
-      propertyPath: camera2
+      propertyPath: levelEndCamera
       value: 
       objectReference: {fileID: 466601430}
     - target: {fileID: 7224582403084585988, guid: ed5b367e932379843bb010591a353001,
         type: 3}
-      propertyPath: camera3
+      propertyPath: gameLostCamera
       value: 
       objectReference: {fileID: 1215277232}
     - target: {fileID: 7224582403084585988, guid: ed5b367e932379843bb010591a353001,

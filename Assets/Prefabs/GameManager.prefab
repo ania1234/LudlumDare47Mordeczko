@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayDuration: 10
   maxLevelNumber: 5
-  camera1: {fileID: 0}
-  camera2: {fileID: 0}
-  camera3: {fileID: 0}
+  gameplayCamera: {fileID: 0}
+  levelEndCamera: {fileID: 0}
+  gameLostCamera: {fileID: 0}
   heroAnimator: {fileID: 0}
   allanimator: {fileID: 0}
   menuSceneName: Menu
@@ -57,7 +57,7 @@ MonoBehaviour:
   timeLeft: 0
   firsttime: 1
   doubleClickDuration: 0.5
-  draggableItemOffset: {x: 0, y: 3, z: 0}
+  draggableItemOffset: {x: -2, y: -2, z: 0}
 --- !u!114 &468440446
 MonoBehaviour:
   m_ObjectHideFlags: 0

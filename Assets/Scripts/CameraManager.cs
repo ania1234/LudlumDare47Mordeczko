@@ -24,11 +24,11 @@ public class CameraManager : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
-        GameManager.instance.onDayTimeChanged += Instance_onDayTimeChanged; ;
+        GameManager_old.instance.onDayTimeChanged += Instance_onDayTimeChanged; ;
     }
 
     private void Instance_onDayTimeChanged(DayTimeEnum obj)

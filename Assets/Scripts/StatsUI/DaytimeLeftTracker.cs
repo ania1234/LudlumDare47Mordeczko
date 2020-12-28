@@ -9,12 +9,12 @@ public class DaytimeLeftTracker : MonoBehaviour
 
     private IEnumerator Start()
     {
-        while (GameManager.instance == null)
+        while (GameManager_old.instance == null)
         {
             yield return null;
         }
-        GameManager.instance.onDayTimeChanged += Instance_onDayTimeChanged;
-        GameManager.instance.onDayTimeLeftChanged += Instance_onDayTimeLeftChanged;
+        GameManager_old.instance.onDayTimeChanged += Instance_onDayTimeChanged;
+        GameManager_old.instance.onDayTimeLeftChanged += Instance_onDayTimeLeftChanged;
     }
 
     private void Instance_onDayTimeLeftChanged(float obj)
